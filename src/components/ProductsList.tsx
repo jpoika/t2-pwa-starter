@@ -19,7 +19,7 @@ export interface State {
 
 }
 
-export default class CommandProducts extends React.Component<Props, State>{
+export default class ProductsList extends React.Component<Props, State>{
 
   constructor(props,context){
     super(props);

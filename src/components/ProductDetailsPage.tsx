@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ProductInterface} from '../res/data/products';
-import {AppPageInterface} from './AppTheme';
+import {AppPageInterface} from './Page';
 import FavoriteCheckbox from './FavoriteCheckBox';
 
 import {greyContainer,whiteContainer} from './commonStyles';
@@ -17,17 +17,11 @@ export interface State {
 
 }
 
-export default class CommandDetails extends React.Component<Props, State>{
-  static MAX_WIDTH:number = 640;
+export default class ProductDetailsPage extends React.Component<Props, State>{
 
   componentWillMount(){
     const {appPage} = this.props;
-    appPage.setPageTitle("Command Details");
-  }
-  getContentWidth = () => {
-    const {appPage} = this.props;
-    const maxWidth = CommandDetails.MAX_WIDTH;
-    return  (appPage.screen.width > maxWidth ? maxWidth : appPage.screen.width) * 0.90;
+    appPage.setPageTitle("Product Details");
   }
 
   handleSetToggle = () => {

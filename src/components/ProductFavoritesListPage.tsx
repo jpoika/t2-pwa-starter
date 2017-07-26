@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ProductInterface} from '../res/data/products';
 import CommandListItem from './CommandListItem';
 import {List} from 'material-ui/List';
-import {AppPageInterface} from './AppTheme';
+import {AppPageInterface} from './Page';
 import {whiteContainer} from './commonStyles';
 export interface Props {
   products:ProductInterface[];
@@ -15,7 +15,7 @@ export interface State {
  
 }
 
-export default class ProductsCatalog extends React.Component<Props, State>{
+export default class ProductFavoritesListPage extends React.Component<Props, State>{
 
   componentWillMount(){
     this.props.appPage.setPageTitle("Favorites");

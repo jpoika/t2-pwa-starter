@@ -1,6 +1,6 @@
 import * as React from 'react';
-import CommandHospitalsContainer from '../containers/CommandsList';
-import {AppPageInterface} from './AppTheme'
+import ProductsListContainer from '../containers/ProductsList';
+import {AppPageInterface} from './Page';
 import {whiteContainer} from './commonStyles'
 export interface Props {
   appPage: AppPageInterface;
@@ -11,8 +11,7 @@ export interface State {
   searchText: string;
 }
 
-
-export default class CommandsPage extends React.Component<Props, State>{
+export default class ProductsPage extends React.Component<Props, State>{
   static defaultProps: Partial<Props> = {
     searchText: ""
   }
@@ -24,7 +23,7 @@ export default class CommandsPage extends React.Component<Props, State>{
   }
 
   componentWillMount(){
-    this.props.appPage.setPageTitle("Commands");
+    this.props.appPage.setPageTitle("Products");
   }
 
   componentDidMount(){
@@ -42,7 +41,7 @@ export default class CommandsPage extends React.Component<Props, State>{
 
   render(){
     return <div style={whiteContainer}>
-              <CommandHospitalsContainer />
+              <ProductsListContainer />
     </div>;
   }
 }

@@ -14,6 +14,7 @@ import {withRouter} from 'react-router-dom';
 import Page from '../Containers/Page';
 import SnackbarGlobal from '../containers/SnackbarGlobal';
 import ProductFavoritesListPage from '../containers/ProductFavoritesListPage';
+import ProductDetailsPage from '../containers/ProductDetailsPage';
 
 
 const muiTheme = getMuiTheme({
@@ -196,8 +197,8 @@ class App extends React.Component<Props, State>{
 
                 <Route exact path="/" render={this.renderRouteComponent(HomePage,{titlePath: "/",leftIcon: <BackButton path="/" />})} />
                 <Route exact path="/favorites" render={this.renderRouteComponent(ProductFavoritesListPage,{titlePath: "/",leftIcon: <BackButton path="/" />})} />
-
-
+                <Route exact path="/products/:id" render={this.renderRouteComponent(ProductDetailsPage,{titlePath: "/products",leftIcon: <BackButton path="/products" />})} />
+  
                 <SnackbarGlobal />
                 <EulaDialog />
             </div>

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import AppThemeComponent from '../components/AppTheme';
+import AppThemeComponent from '../components/MainAppBar';
 import {withRouter} from 'react-router-dom';
 import {setPageTitle} from '../actions';
 

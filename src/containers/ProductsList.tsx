@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import CommandProductsComponent from '../components/CommandsList';
-import {CommandInterface} from '../res/data/commands';
+import ProductsListComponent from '../components/ProductsList';
+import {ProductInterface} from '../res/data/products';
 import {withRouter} from 'react-router-dom';
 import {getProductsAdvancedPaged, getProductSearchText,getProductPage,getProductsPageMax} from './selectors';
 import {setProductPage} from '../actions';
@@ -16,8 +16,8 @@ const stateToProps = (state,ownProps) => {
 
 const dispatchToProps = (dispatch,ownProps) => {
   return {
-    itemClick: (product: CommandInterface) => {
-       ownProps.history.push('/commands/' + product.id);
+    itemClick: (product: ProductInterface) => {
+       ownProps.history.push('/products/' + product.id);
     },
     setPage: (pageIdx: number) => {
       dispatch(setProductPage(pageIdx));
@@ -25,4 +25,4 @@ const dispatchToProps = (dispatch,ownProps) => {
   }
 }
 
-export default withRouter(connect(stateToProps,dispatchToProps)(CommandProductsComponent));
+export default withRouter(connect(stateToProps,dispatchToProps)(ProductsListComponent));

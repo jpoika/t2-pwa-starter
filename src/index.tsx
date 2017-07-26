@@ -9,7 +9,7 @@ import { AppContainer } from 'react-hot-loader';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import App from './containers/AppTheme';
+import App from './containers/Main';
 
 import reducer from './reducers';
 import {setUserPlatform} from './actions';
@@ -95,7 +95,7 @@ if(__IS_CORDOVA_BUILD__){
   render(App);
   // Hot Module Replacement API. Only used when running the dev server.
   if ((module as any).hot) {
-    (module as any).hot.accept('./containers/AppTheme', () => {
+    (module as any).hot.accept('./containers/Main', () => {
       render(App);
     });
   }
