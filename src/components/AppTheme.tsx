@@ -13,7 +13,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {withRouter} from 'react-router-dom';
 import Page from '../Containers/Page';
 import SnackbarGlobal from '../containers/SnackbarGlobal';
-//import {homeFooterDefault, homeFooterAbsolute} from './commonStyles';
+import ProductFavoritesListPage from '../containers/ProductFavoritesListPage';
+
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -183,24 +184,6 @@ class App extends React.Component<Props, State>{
     }
   }
 
-  shouldDisplayFooter = () => {
-    const {screen} = this.state;
-    const widthCompare = screen.width > 640 ? 640 : screen.width;
-    const hwRatio = screen.height/widthCompare;
-    if(hwRatio < 1.7){
-      return false;
-    }
-    return true;
-  }
-
-  shouldFooterAbsolute = () => {
-    const {screen} = this.state;
-    if(screen.width >= 640){
-      return false;
-    }
-    return true;
-  }
-
   render(){
     //const {screen,showProgressIndicator} = this.state;
 
@@ -212,7 +195,7 @@ class App extends React.Component<Props, State>{
                 <AppBar  leftIcon={this.state.leftIcon} onTitleClick={this.handleTitleClick} />
 
                 <Route exact path="/" render={this.renderRouteComponent(HomePage,{titlePath: "/",leftIcon: <BackButton path="/" />})} />
-
+                <Route exact path="/favorites" render={this.renderRouteComponent(ProductFavoritesListPage,{titlePath: "/",leftIcon: <BackButton path="/" />})} />
 
 
                 <SnackbarGlobal />
