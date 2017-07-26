@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {CommandInterface} from '../res/data/commands';
+import {ProductInterface} from '../res/data/products';
 import CommandListItem from './CommandListItem';
 import {List} from 'material-ui/List';
 import {AppPageInterface} from './AppTheme';
 import {whiteContainer} from './commonStyles';
 export interface Props {
-  hospitals:CommandInterface[];
-  removeFavorite(hospital: CommandInterface): void;
-  itemClick(hospital: CommandInterface): void;
+  products:ProductInterface[];
+  removeFavorite(product: ProductInterface): void;
+  itemClick(product: ProductInterface): void;
   appPage: AppPageInterface;
 }
 
@@ -21,19 +21,18 @@ export default class ProductsCatalog extends React.Component<Props, State>{
     this.props.appPage.setPageTitle("Favorites");
   }
 
-  handleItemClick = (hospital) => {
+  handleItemClick = (product) => {
       const {itemClick} = this.props;
-      itemClick(hospital);
-
+      itemClick(product);
   }
   render(){
-    const {hospitals} = this.props;
-    const hasFavorites = hospitals.length > 0;
+    const {products} = this.props;
+    const hasFavorites = products.length > 0;
     return <div style={whiteContainer}>
               <List>
                 {!hasFavorites && <h3>Your Favorites List is empty</h3>}
-                {hospitals.map(hospital => {
-                  return <CommandListItem key={hospital.id} itemClick={this.handleItemClick} hospital={hospital} />
+                {products.map(product => {
+                  return <CommandListItem key={product.id} itemClick={this.handleItemClick} product={product} />
                 })}
               </List>
 

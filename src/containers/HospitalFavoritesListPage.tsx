@@ -1,22 +1,22 @@
 import {connect} from 'react-redux';
-import FavoritesListComponent from '../components/HospitalFavoritesListPage';
+import FavoritesListComponent from '../components/ProductFavoritesListPage';
 import {CommandInterface} from '../res/data/commands';
-import {removeHospitalFromFavorites} from '../actions';
+import {removeProductFromFavorites} from '../actions';
 import {withRouter} from 'react-router-dom';
 
 const stateToProps = (state,ownProps) => {
   return {
-    hospitals: state.favoriteHospitalIds.map(fid => state.hospitals[fid])
+    products: state.favoriteProductIds.map(fid => state.products[fid])
   }
 }
 
 const dispatchToProps = (dispatch,ownProps) => {
   return {
-    removeFavorite: (hospital: CommandInterface) => {
-      dispatch(removeHospitalFromFavorites(hospital.id));
+    removeFavorite: (product: CommandInterface) => {
+      dispatch(removeProductFromFavorites(product.id));
     },
-    itemClick: (hospital: CommandInterface) => {
-       ownProps.history.push('/favorites/' + hospital.id);
+    itemClick: (product: CommandInterface) => {
+       ownProps.history.push('/favorites/' + product.id);
     }
   }
 }

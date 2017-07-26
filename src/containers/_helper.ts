@@ -33,8 +33,8 @@ export  const externalLink = (absolutePath:string,target: string = '_system') =>
 
 }
 
-export const isHospitalFavorite = (hospital:{id: number},ids:number[]) =>  {
-   return ids.indexOf(hospital.id) > -1;
+export const isProductFavorite = (ob:{id: number},ids:number[]) =>  {
+   return ids.indexOf(ob.id) > -1;
 }
 
 export const calcDistance = (hospital: {distance: number,latitude: number, longitude: number},refLatitue,refLongitude) => {

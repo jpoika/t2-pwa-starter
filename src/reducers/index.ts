@@ -1,25 +1,24 @@
-import {defaultCommands, defaultCommandIds} from '../res/data/commands';
+import {defaultProducts, defaultProductIds} from '../res/data/products';
 
 import {
   SET_PAGE_TITLE,
-  SORT_HOSPITALS,
-  FILTER_HOSPITALS,
+  SORT_PRODUCTS,
+  FILTER_PRODUCTS,
   SET_USER_PLATFORM,
-  ADD_HOSPITAL_FAVORITES,
-  REMOVE_HOSPITAL_FAVORITES,
+  ADD_PRODUCTS_FAVORITES,
+  REMOVE_PRODUCTS_FAVORITES,
   T2_APP_MESSAGE_CLEAR,
   T2_APP_MESSAGE_START,
   EULA_ACCEPTED,
   EULA_REJECTED,
-  SET_HOSPITAL_GEO_SORT_TEXT,
-  SET_HOSPITALS_PAGE,
+  SET_PRODUCTS_PAGE,
  // SORT_DEFAULT
 } from '../actions';
 import {combineReducers} from 'redux';
 import {arrayPushUnique,arrayRemove} from './_helper';
 
 const defaultFilters = {
-  hospitals: {
+  products: {
     sortBy: "default",
     sortDir: "asc",
     filterText: "",
@@ -55,23 +54,19 @@ const defaultView = {
 }
 
 const filters = (state = defaultFilters, action) => {
-  let newHospitals = null;
+  let newProducts = null;
   switch (action.type) {
-    case SORT_HOSPITALS:
-      newHospitals = {...state.hospitals,sortBy: action.sortBy,sortDir: action.sortDir};
-      state = {...state,hospitals: newHospitals};
+    case SORT_PRODUCTS:
+      newProducts = {...state.products,sortBy: action.sortBy,sortDir: action.sortDir};
+      state = {...state,products: newProducts};
       break;
-    case FILTER_HOSPITALS:
-      newHospitals = {...state.hospitals,filterText: action.text};
-      state = {...state,hospitals: newHospitals};
+    case FILTER_PRODUCTS:
+      newProducts = {...state.products,filterText: action.text};
+      state = {...state,products: newProducts};
       break;
-    case SET_HOSPITAL_GEO_SORT_TEXT:
-      newHospitals = {...state.hospitals,sortText: action.text};
-      state = {...state,hospitals: newHospitals};
-      break;
-    case SET_HOSPITALS_PAGE:
-      newHospitals = {...state.hospitals,currentPage: action.page};
-      state = {...state,hospitals: newHospitals};
+    case SET_PRODUCTS_PAGE:
+      newProducts = {...state.products,currentPage: action.page};
+      state = {...state,products: newProducts};
       break;
   }
   return state;
@@ -109,11 +104,11 @@ const settings = (state = defaultSettings,action) => {
   return state;
 }
 
-const hospitals = (state = defaultCommands, action) => {
+const products = (state = defaultProducts, action) => {
   return state;
 }
 
-const hospitalIds = (state = defaultCommandIds, action) => {
+const productIds = (state = defaultProductIds, action) => {
   return state;
 }
 
@@ -133,12 +128,12 @@ const view = (state = defaultView, action) => {
   return state;
 }
 
-const favoriteHospitalIds = (state = [], action) => {
+const favoriteProductIds = (state = [], action) => {
   switch (action.type) {
-    case ADD_HOSPITAL_FAVORITES:
+    case ADD_PRODUCTS_FAVORITES:
       state = arrayPushUnique(action.id,state);
       break;
-    case REMOVE_HOSPITAL_FAVORITES:
+    case REMOVE_PRODUCTS_FAVORITES:
       state = arrayRemove(action.id,state);
       break;
   }
@@ -146,10 +141,10 @@ const favoriteHospitalIds = (state = [], action) => {
 }
 
 const reducer = combineReducers({
-  hospitals,
-  hospitalIds,
+  products,
+  productIds,
   filters,
-  favoriteHospitalIds,
+  favoriteProductIds,
   user,
   view,
   settings

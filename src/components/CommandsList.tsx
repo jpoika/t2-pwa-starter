@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {CommandInterface} from '../res/data/commands';
+import {ProductInterface} from '../res/data/products';
 import CommandListItem from './CommandListItem';
 import {List} from 'material-ui/List';
 import CommandsPagination from './CommandsPagination';
 
 export interface Props {
-  hospitals: CommandInterface[];
-  addFavorite(hospital: CommandInterface): void;
-  itemClick(hospital: CommandInterface): void;
+  products: ProductInterface[];
+  addFavorite(product: ProductInterface): void;
+  itemClick(product: ProductInterface): void;
   history:{push: any}
   setPage: (pageIdx: number) => void;
   page: number;
@@ -19,23 +19,21 @@ export interface State {
 
 }
 
-export default class CommandHospitals extends React.Component<Props, State>{
+export default class CommandProducts extends React.Component<Props, State>{
 
   constructor(props,context){
     super(props);
   }
 
-  handleItemClick = (hospital) => {
+  handleItemClick = (product) => {
       const {itemClick} = this.props;
-      itemClick(hospital);
+      itemClick(product);
 
   }
 
-
-
   render(){
-    const {hospitals,page,lastPage,setPage,searchText} = this.props;
-    if(!hospitals.length){
+    const {products,page,lastPage,setPage,searchText} = this.props;
+    if(!products.length){
       let noResultsText = "No Results";
       if(searchText.length > 0){
         noResultsText += ` for "${searchText}"`
@@ -46,8 +44,8 @@ export default class CommandHospitals extends React.Component<Props, State>{
 
               <List>
                 <CommandsPagination page={page} lastPage={lastPage} setPage={setPage} />
-                {hospitals.map(hospital => {
-                  return <CommandListItem key={hospital.id} itemClick={this.handleItemClick} hospital={hospital} />
+                {products.map(product => {
+                  return <CommandListItem key={product.id} itemClick={this.handleItemClick} product={product} />
                 })}
                 <CommandsPagination page={page} lastPage={lastPage} setPage={setPage} />
               </List>

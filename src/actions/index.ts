@@ -1,18 +1,16 @@
 //import {nextId} from './_helper';
 
-export const ADD_HOSPITAL_FAVORITES = 'T2.ADD_HOSPITAL_FAVORITES';
-export const REMOVE_HOSPITAL_FAVORITES = 'T2.REMOVE_HOSPITAL_FAVORITES';
+export const ADD_PRODUCTS_FAVORITES = 'T2.ADD_PRODUCTS_FAVORITES';
+export const REMOVE_PRODUCTS_FAVORITES = 'T2.REMOVE_PRODUCTS_FAVORITES';
 export const SET_PAGE_TITLE = 'T2.SET_PAGE_TITLE';
-export const SORT_HOSPITALS = 'T2.SORT_HOSPITALS';
-export const FILTER_HOSPITALS = 'T2.FILTER_HOSPITALS';
+export const SORT_PRODUCTS = 'T2.SORT_PRODUCTS';
+export const FILTER_PRODUCTS = 'T2.FILTER_PRODUCTS';
 export const SET_USER_PLATFORM = 'T2.SET_USER_PLATFORM';
 export const T2_APP_MESSAGE_START = 'T2.APP_MESSAGE_START';
 export const T2_APP_MESSAGE_CLEAR = 'T2.APP_MESSAGE_CLEAR';
 export const EULA_ACCEPTED = 'T2.EULA_ACCEPTED';
 export const EULA_REJECTED = 'T2.EULA_REJECTED';
-export const SET_HOSPITAL_GEO_SORT_TEXT = 'T2.SET_HOSPITAL_GEO_SORT_TEXT';
-export const UNWATCH_CURRENT_LOCATION = 'T2.UNWATCH_CURRENT_LOCATION';
-export const SET_HOSPITALS_PAGE = 'T2.SET_HOSPITALS_PAGE';
+export const SET_PRODUCTS_PAGE = 'T2.SET_PRODUCTS_PAGE';
 
 
 export const SORT_ALPHABETICAL = 'default';
@@ -20,9 +18,9 @@ export const SORT_DEFAULT = 'default';
 export const SORT_LOCATION = 'current_location';
 
 
-export const setHospitalPage = (page: number) => {
+export const setProductPage = (page: number) => {
   return {
-    type: SET_HOSPITALS_PAGE,
+    type: SET_PRODUCTS_PAGE,
     page
   }
 }
@@ -31,13 +29,6 @@ export const setHospitalPage = (page: number) => {
 export const eulaAccepted = () => {
   return {
     type: EULA_ACCEPTED
-  }
-}
-
-export const setHospitalGeoSortText = (text: string) => {
-  return {
-    type: SET_HOSPITAL_GEO_SORT_TEXT,
-    text
   }
 }
 
@@ -54,26 +45,26 @@ export const eulaRejected = () => {
   }
 }
 
-export const sortHospitals = (sortBy: string, sortDir = 'asc') => {
+export const sortProducts = (sortBy: string, sortDir = 'asc') => {
   return {
-    type: SORT_HOSPITALS,
+    type: SORT_PRODUCTS,
     sortBy,
     sortDir
   }
 }
 
-export const searchHospitals = (text: string) => {
+export const searchProducts = (text: string) => {
   return (dispatch,getState,extraArgs) => {
       //search change pagination so must reset page on
       // any action which filters results
-      dispatch(setHospitalPage(0)); 
-      dispatch(searchHospitalText(text));
+      dispatch(setProductPage(0)); 
+      dispatch(searchProductText(text));
   }
 }
 
-export const searchHospitalText= (text: string) => {
+export const searchProductText= (text: string) => {
   return {
-    type: FILTER_HOSPITALS,
+    type: FILTER_PRODUCTS,
     text
   }
 }
@@ -93,17 +84,17 @@ export const setPageTitle = (title:string) => {
   }
 }
 
-export const addHospitalToFavorites = (hospitalId:number) => {
+export const addProductToFavorites = (productId:number) => {
   return {
-    type: ADD_HOSPITAL_FAVORITES,
-    id: hospitalId
+    type: ADD_PRODUCTS_FAVORITES,
+    id: productId
   }
 }
 
-export const removeHospitalFromFavorites = (hospitalId:number) => {
+export const removeProductFromFavorites = (productId:number) => {
   return {
-    type: REMOVE_HOSPITAL_FAVORITES,
-    id: hospitalId
+    type: REMOVE_PRODUCTS_FAVORITES,
+    id: productId
   }
 }
 

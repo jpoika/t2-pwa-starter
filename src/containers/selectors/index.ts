@@ -1,75 +1,59 @@
 import {createSelector} from 'reselect'
-import {calcDistance,alphaSort} from '../_helper';
+import {alphaSort} from '../_helper';
 
+export const getProductSearchText = (state) => state.filters.products.filterText;
 
-//export const getHospitalSearchText = (state,props) => props.searchText;
-export const getHospitalSearchText = (state) => state.filters.hospitals.filterText;
-
-export const getHospitals = (state) => state.hospitalIds.map(hid => state.hospitals[hid]);
+export const getProducts = (state) => state.productIds.map(hid => state.products[hid]);
 
 export const getUser = (state) => state.user;
-export const userHasLatLon = (state) => {
-    const {latitude,longitude} = getUser(state);
-    return latitude !== null && longitude !== null;
-}
-export const getGeoSearchData = (state) => state.searches.geo;
 
-export const getHospitalSortFilter = (state) => state.filters.hospitals;
+export const getProductSortFilter = (state) => state.filters.products;
 
-export const getHospitalPage = (state) => getHospitalSortFilter(state).currentPage;
-export const getHospitalsResultMax = (state) => getHospitalSortFilter(state).resultsMax;
+export const getProductPage = (state) => getProductSortFilter(state).currentPage;
+export const getProductsResultMax = (state) => getProductSortFilter(state).resultsMax;
 
 export const getPermissions = (state) => state.settings.permissions;
 
-export const searchHospitals = createSelector( //just searching titles for now
-  [getHospitals,getHospitalSearchText],
-  (hospitals,searchText) => {
-    return hospitals.filter((hospital) => {
-        return hospital.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1
+export const searchProducts = createSelector( //just searching titles for now
+  [getProducts,getProductSearchText],
+  (products,searchText) => {
+    return products.filter((product) => {
+        return product.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1
     });
   }
 );
 
-export const getHospitalsAdvanced = createSelector( //just searching titles for now
-  [searchHospitals,getUser,getHospitalSortFilter,userHasLatLon],
-  (hospitals,user,sortFilter,hasLatLon) => {
-    const {latitude,longitude} = user;
+export const getProductsAdvanced = createSelector( //just searching titles for now
+  [searchProducts,getUser,getProductSortFilter],
+  (products,user,sortFilter) => {
     let sortCb = alphaSort('title',sortFilter.sortDir);
-    if(userHasLatLon && sortFilter.sortBy === 'current_location' || sortFilter.sortBy === 'zip_city_location'){
-      sortCb = alphaSort('distance',sortFilter.sortDir);
-    }
 
-    if(hasLatLon){
-      return hospitals.map(hospital => calcDistance(hospital,latitude,longitude))
-                        .sort(sortCb);
-    }
-
-    return hospitals.map(hospital => {
-        hospital.distance = -1;
-        return hospital;
+    return products.map(product => {
+        product.distance = -1;
+        return product;
     }).sort(sortCb);
   }
 );
 
-export const getHospitalsAdvancedPaged = createSelector( //just searching titles for now
-  [getHospitalsAdvanced,getHospitalSortFilter],
-  (hospitals,sortFilter) => {
+export const getProductsAdvancedPaged = createSelector( //just searching titles for now
+  [getProductsAdvanced,getProductSortFilter],
+  (products,sortFilter) => {
     const startIndx = sortFilter.currentPage * sortFilter.resultsMax;
     const resultsLength = startIndx + sortFilter.resultsMax;
-    return hospitals.slice(startIndx,resultsLength)
+    return products.slice(startIndx,resultsLength)
   }
 );
 
-export const getHospitalsLength = createSelector(
-    [getHospitalsAdvanced],
-    (hospitals) => {
-      return hospitals.length;
+export const getProductsLength = createSelector(
+    [getProductsAdvanced],
+    (products) => {
+      return products.length;
     }
   );
-export const getHospitalsPageMax = createSelector(
-    [getHospitalsLength,getHospitalsResultMax],
-    (hospitalsLength,max_results) => {
+export const getProductsPageMax = createSelector(
+    [getProductsLength,getProductsResultMax],
+    (productsLength,max_results) => {
       const safe_max_results = max_results == 0 ? 1 : max_results;
-      return Math.ceil(hospitalsLength/safe_max_results);
+      return Math.ceil(productsLength/safe_max_results);
     }
   );

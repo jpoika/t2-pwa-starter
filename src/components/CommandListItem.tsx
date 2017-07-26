@@ -1,13 +1,11 @@
 import * as React from 'react';
-import {CommandInterface} from '../res/data/commands';
-import Avatar from 'material-ui/Avatar';
-const placeHolderImg = require('../res/images/commands/placeholder.jpg');
-//import {listItemImage} from './commonStyles';
+import {ProductInterface} from '../res/data/products';
+
 import {ListItem} from 'material-ui/List';
 
 export interface Props {
-  hospital: CommandInterface;
-  itemClick(hospital: CommandInterface);
+  product: ProductInterface;
+  itemClick(product: ProductInterface);
 }
 
 export interface State {
@@ -20,21 +18,16 @@ export default class CommandItem extends React.Component<Props, State>{
     super(props);
   }
   handleItemClick = (event) => {
-    const {itemClick,hospital} = this.props;
-    itemClick(hospital);
+    const {itemClick,product} = this.props;
+    itemClick(product);
   }
   render(){
-    const {hospital} = this.props;
-    const hasDistance = hospital.distance > 0;
+    const {product} = this.props;
     let distanceString = '';
-    if(hasDistance){
-      distanceString = (hospital.distance > 2000 ? '2000+ ' : hospital.distance) + ' miles'; 
-    }
 
     return <ListItem 
-            onTouchTap={this.handleItemClick} 
-            leftAvatar={<Avatar src={hospital.icon || hospital.img || placeHolderImg} />}  
-            primaryText={hospital.title} 
+            onTouchTap={this.handleItemClick}   
+            primaryText={product.title} 
             secondaryText={distanceString}
             />
   }
