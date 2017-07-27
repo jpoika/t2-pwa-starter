@@ -28,7 +28,7 @@ export default class Home extends React.Component<Props, State>{
   render(){
   
     return <div>
-               <h1>Default Home Page</h1>
+               <h1>Under Construction</h1>
           </div>;
   }
 }

@@ -67,7 +67,8 @@ module.exports = {
           },
           '__DEVTOOLS__': true,
           '__IS_CORDOVA_BUILD__': false,
-          '__REDUX_PERSIST_PREFIX__': JSON.stringify('changeMeDev:')
+          '__REDUX_PERSIST_PREFIX__': JSON.stringify('changeMeDev:'),
+          '__APP_VERSION__': JSON.stringify('0.0.0')
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
