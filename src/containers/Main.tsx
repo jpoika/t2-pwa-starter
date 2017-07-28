@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import AppThemeComponent from '../components/MainAppBar';
+import MainComponent from '../components/Main';
 import {withRouter} from 'react-router-dom';
 import {setPageTitle} from '../actions';
 
@@ -16,4 +16,4 @@ const dispatchToProps = (dispatch,ownProps) => {
   }
 }
 
-export default withRouter(connect(stateToProps,dispatchToProps)(AppThemeComponent));
+export default withRouter(connect(stateToProps,dispatchToProps)(MainComponent));

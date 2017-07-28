@@ -21,7 +21,7 @@ injectTapEventPlugin();
 require('./index.html'); //load and emit index.html to destination directory
 
 
-const render = (Component: any) => {
+const render = (RootComponent: any) => {
 
 
   //cordova plugins will be loaded by this point
@@ -77,7 +77,7 @@ const render = (Component: any) => {
         <AppContainer>
           <Provider store={store}>
             <HashRouter>
-              <Component />
+              <RootComponent appType={'default'} />
             </HashRouter>
           </Provider>
         </AppContainer>,

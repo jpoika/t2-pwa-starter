@@ -13,8 +13,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {withRouter} from 'react-router-dom';
 import Page from '../Containers/Page';
 import SnackbarGlobal from '../containers/SnackbarGlobal';
-import ProductFavoritesListPage from '../containers/ProductFavoritesListPage';
-import ProductDetailsPage from '../containers/ProductDetailsPage';
+import ProductFavoritesListPage from '../containers/StoreDemo/ProductFavoritesListPage';
+import ProductDetailsPage from '../containers/StoreDemo/ProductDetailsPage';
 
 
 const muiTheme = getMuiTheme({
