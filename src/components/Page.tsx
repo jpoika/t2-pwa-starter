@@ -1,8 +1,9 @@
 import * as React from 'react';
 export interface Props {
   appPage: AppPageInterface;
-  leftIcon: JSX.Element;
-  titlePath: string; //the path navigated to when appbar title is clicked
+  leftIcon?: JSX.Element;
+  titlePath?: string; //the path navigated to when appbar title is clicked
+  title?: string;
 }
 
 export interface AppPageInterface {
@@ -22,11 +23,22 @@ export interface State {
 }
 
 export default class Page extends React.Component<Props, State>{
-  
+  static defaultProps: Partial<Props> = {
+    title: '',
+    titlePath: '',
+    leftIcon: null
+  }
   componentWillMount(){
-    const {appPage,leftIcon,titlePath} = this.props;
+    const {appPage,leftIcon,titlePath,title} = this.props;
     appPage.setMainIcon(leftIcon);
-    appPage.setTitlePath(titlePath);
+
+    if(titlePath){
+       appPage.setTitlePath(titlePath);
+    }
+
+    if(title){
+        appPage.setPageTitle(title);
+    }
   }
 
   render(){

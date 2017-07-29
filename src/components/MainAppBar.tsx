@@ -2,7 +2,6 @@
 import * as React from 'react';
 import AppBar from '../containers/AppBar';
 import BackButton from './BackButton';
-import HomePage from './HomePage';
 
 import EulaDialog from '../containers/Eula';
 
@@ -13,9 +12,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {withRouter} from 'react-router-dom';
 import Page from '../Containers/Page';
 import SnackbarGlobal from '../containers/SnackbarGlobal';
-import ProductFavoritesListPage from '../containers/StoreDemo/ProductFavoritesListPage';
-import ProductDetailsPage from '../containers/StoreDemo/ProductDetailsPage';
 
+import StoreRoutes from './StoreDemo/StoreRoutes';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -193,11 +191,9 @@ class App extends React.Component<Props, State>{
                 // <Route exact path="/leadership/:id" render={this.renderRouteComponent(LeadershipDetailsPage,{titlePath: "/leadership",leftIcon: <BackButton path="/leadership" />})} />
     return <MuiThemeProvider muiTheme={muiTheme}>
             <div>
-                <AppBar  leftIcon={this.state.leftIcon} onTitleClick={this.handleTitleClick} />
+                <AppBar defaultTitle={this.state.title}  leftIcon={this.state.leftIcon} onTitleClick={this.handleTitleClick} />
 
-                <Route exact path="/" render={this.renderRouteComponent(HomePage,{titlePath: "/",leftIcon: <BackButton path="/" />})} />
-                <Route exact path="/favorites" render={this.renderRouteComponent(ProductFavoritesListPage,{titlePath: "/",leftIcon: <BackButton path="/" />})} />
-                <Route exact path="/products/:id" render={this.renderRouteComponent(ProductDetailsPage,{titlePath: "/products",leftIcon: <BackButton path="/products" />})} />
+                  <Route path="/" render={this.renderRouteComponent(StoreRoutes,{titlePath: "/",leftIcon: <BackButton path="/" />})} />
   
                 <SnackbarGlobal />
                 <EulaDialog />

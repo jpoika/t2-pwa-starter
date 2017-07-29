@@ -4,7 +4,7 @@ import AppBarComponent from '../components/AppBar';
 
 const stateToProps = (state,ownProps) => {
   return {
-    title: state.view.page.title,
+    title: state.view.page.title || ownProps.defaultTitle,
     leftIcon: ownProps.leftIcon
   }
 }

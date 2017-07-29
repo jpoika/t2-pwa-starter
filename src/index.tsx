@@ -43,7 +43,7 @@ const render = (RootComponent: any) => {
 
 
   persistStore(store,{
-    blacklist: [],
+    blacklist: ['view'],
     //whitelist: [],
     storage: localForage,//You can choose a diffrent engine
     keyPrefix: __REDUX_PERSIST_PREFIX__
@@ -77,7 +77,7 @@ const render = (RootComponent: any) => {
         <AppContainer>
           <Provider store={store}>
             <HashRouter>
-              <RootComponent appType={'default'} />
+              <RootComponent title={"Starter App"} appType={'default'} />
             </HashRouter>
           </Provider>
         </AppContainer>,
