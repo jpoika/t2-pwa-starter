@@ -1,21 +1,10 @@
 import * as React from 'react';
+import {AppPageInterface} from './Main';
 export interface Props {
   appPage: AppPageInterface;
   leftIcon?: JSX.Element;
   titlePath?: string; //the path navigated to when appbar title is clicked
   title?: string;
-}
-
-export interface AppPageInterface {
-  screen:{width: number, height: number, orientation: string};
-  setMainIcon(icon: JSX.Element): void;
-  setPageTitle(title:string): void;
-  setTitlePath(titlePath:string):void;
-  history: any;
-  showProgress: (to_ms?: number) => void;
-  hideProgress: () => void;
-  navigateProgress: (path: string,to_ms?: number) => void;
-  progressVisible: boolean;
 }
 
 export interface State {
@@ -30,6 +19,7 @@ export default class Page extends React.Component<Props, State>{
   }
   componentWillMount(){
     const {appPage,leftIcon,titlePath,title} = this.props;
+    
     appPage.setMainIcon(leftIcon);
 
     if(titlePath){
@@ -37,6 +27,7 @@ export default class Page extends React.Component<Props, State>{
     }
 
     if(title){
+        console.log(title);
         appPage.setPageTitle(title);
     }
   }

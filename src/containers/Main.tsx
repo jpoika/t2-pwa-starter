@@ -5,7 +5,8 @@ import {setPageTitle} from '../actions';
 
 const stateToProps = (state,ownProps) => {
   return {
-
+    version: ownProps.version,
+    title: ownProps.defaultTitle
   }
 }
 const dispatchToProps = (dispatch,ownProps) => {

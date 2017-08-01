@@ -2,8 +2,11 @@
 import * as React from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import HomePage from "./HomePage";
-import {AppPageInterface} from '../Page';
-import Page from '../Page';
+import {AppPageInterface} from '../Main';
+import {routePageWithProps} from '../AppHOC';
+import BackButton from '../BackButton';
+
+import ProductDetailsPage from '../../containers/StoreDemo/ProductDetailsPage';
 export interface Props {
   appPage: AppPageInterface;
   match: {url: string}
@@ -11,16 +14,12 @@ export interface Props {
 
 class StoreRoutes extends React.Component<Props, {}>{
 
-  renderComponentPage = (Component,title) => {
-    const {appPage} = this.props;
-    return (routeProps) => {
-      return <Page title={title} appPage={appPage}><Component /></Page>;
-    }
-  }
   render(){
     const {match} = this.props;
+    const defaultProps = this.props;
     return <div>
-                <Route path={match.url} render={this.renderComponentPage(HomePage,"Demo Home")} />
+                <Route exact path={match.url} render={routePageWithProps(HomePage, defaultProps, "Demo Home")} />
+                <Route exact path={'/products/:id'} render={routePageWithProps(ProductDetailsPage, {...defaultProps,leftIcon:  <BackButton path="/" />},"Details")} />
            </div>;
  
   }

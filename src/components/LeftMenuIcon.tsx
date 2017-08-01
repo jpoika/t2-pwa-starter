@@ -9,14 +9,11 @@ const LeftMenu = () => {
   return (
     <IconMenu
 
-      iconButtonElement={<IconButton><MoreVertIcon color="white" /></IconButton>}
+      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
       anchorOrigin={{horizontal: 'left', vertical: 'top'}}
       targetOrigin={{horizontal: 'left', vertical: 'top'}}
     >
       <MenuItem containerElement={<Link to="/" />} primaryText="Home" />
-      <MenuItem containerElement={<Link to="/commands" />} primaryText="Locations" />
-      <MenuItem containerElement={<Link to="/hotlines" />} primaryText="Hotlines" />
-      <MenuItem containerElement={<Link to="/resources" />} primaryText="Resources" />
     </IconMenu>
     );
 }

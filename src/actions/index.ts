@@ -16,7 +16,11 @@ export const SET_PRODUCTS_PAGE = 'T2.SET_PRODUCTS_PAGE';
 export const SORT_ALPHABETICAL = 'default';
 export const SORT_DEFAULT = 'default';
 export const SORT_LOCATION = 'current_location';
-
+export const sorts = {
+  SORT_ALPHABETICAL,
+  SORT_DEFAULT,
+  SORT_LOCATION
+}
 
 export const setProductPage = (page: number) => {
   return {

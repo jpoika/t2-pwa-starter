@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import CommandDetailsComponent from '../../components/StoreDemo/ProductDetailsPage';
+import CommandDetailsComponent from '../../components/StoreDemo/ProductDetails';
 import {withRouter} from 'react-router-dom';
 import {CommandInterface} from '../../res/data/commands';
 import {isProductFavorite} from '../_helper';

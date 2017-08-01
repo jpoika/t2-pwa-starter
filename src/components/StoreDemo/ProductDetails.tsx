@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ProductInterface} from '../../res/data/products';
-import {AppPageInterface} from '../Page';
+import {AppPageInterface} from '../Main';
 import FavoriteCheckbox from '../FavoriteCheckBox';
 
 import {greyContainer,whiteContainer} from '../commonStyles';
@@ -19,10 +19,6 @@ export interface State {
 
 export default class ProductDetailsPage extends React.Component<Props, State>{
 
-  componentWillMount(){
-    const {appPage} = this.props;
-    appPage.setPageTitle("Product Details");
-  }
 
   handleSetToggle = () => {
     const {toggleFavorite,isFavorite,product,sendMessage} = this.props;

@@ -77,7 +77,7 @@ const render = (RootComponent: any) => {
         <AppContainer>
           <Provider store={store}>
             <HashRouter>
-              <RootComponent title={"Starter App"} appType={'default'} />
+              <RootComponent version={__APP_VERSION__} defaultTitle={"Starter Appz"} appType={'default'} />
             </HashRouter>
           </Provider>
         </AppContainer>,

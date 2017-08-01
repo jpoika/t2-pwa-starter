@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {AppPageInterface} from './Page';
+import {AppPageInterface} from './Main';
 
 declare module 'react' { //See https://github.com/zilverline/react-tap-event-plugin/issues/58
     interface HTMLProps<T> {

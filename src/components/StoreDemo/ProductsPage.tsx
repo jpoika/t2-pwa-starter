@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ProductsListContainer from '../../containers/StoreDemo/ProductsList';
-import {AppPageInterface} from '../Page';
+import {AppPageInterface} from '../Main';
 import {whiteContainer} from '../commonStyles'
 export interface Props {
   appPage: AppPageInterface;
@@ -24,13 +24,6 @@ export default class ProductsPage extends React.Component<Props, State>{
 
   componentWillMount(){
     this.props.appPage.setPageTitle("Products");
-  }
-
-  componentDidMount(){
-    const {appPage} = this.props;
-    if(appPage.progressVisible){
-      appPage.hideProgress();
-    }
   }
 
   handleSearchHospitals = (text: string) => {

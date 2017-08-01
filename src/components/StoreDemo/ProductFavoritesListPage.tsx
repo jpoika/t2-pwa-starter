@@ -2,8 +2,9 @@ import * as React from 'react';
 import {ProductInterface} from '../../res/data/products';
 import CommandListItem from './ProductListItem';
 import {List} from 'material-ui/List';
-import {AppPageInterface} from '../Page';
+import {AppPageInterface} from '../Main';
 import {whiteContainer} from '../commonStyles';
+
 export interface Props {
   products:ProductInterface[];
   removeFavorite(product: ProductInterface): void;
