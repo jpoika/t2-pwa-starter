@@ -6,11 +6,8 @@ import EulaDialog from '../containers/Eula';
 import {routeComponentWithProps} from './AppHOC';
 
 import { Route } from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {withRouter} from 'react-router-dom';
 import SnackbarGlobal from '../containers/SnackbarGlobal';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import StoreRoutes from './StoreDemo/StoreRoutes';
 import {AppPageInterface} from './Main';
 export interface Props {
@@ -41,16 +38,14 @@ class App extends React.Component<Props, State>{
 
   render(){
 
-    return <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-            <div>
+    return <div>
                 <AppBar defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.handleTitleClick} />
 
                 <Route path="/" render={this.renderRouteComponent(StoreRoutes)} />
   
                 <SnackbarGlobal />
                 <EulaDialog />
-            </div>
-          </MuiThemeProvider>;
+            </div>;
  
   }
 }

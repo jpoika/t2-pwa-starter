@@ -2,8 +2,8 @@ import {connect} from 'react-redux';
 import ProductsListComponent from '../../components/StoreDemo/ProductsList';
 import {ProductInterface} from '../../res/data/products';
 import {withRouter} from 'react-router-dom';
-import {getProductsAdvancedPaged, getProductSearchText,getProductPage,getProductsPageMax} from '../selectors';
-import {setProductPage} from '../../actions';
+import {getProductsAdvancedPaged, getProductSearchText,getProductPage,getProductsPageMax} from './selectors';
+import {setProductPage} from '../../actions/storeDemo';
 
 const stateToProps = (state,ownProps) => {
   return {

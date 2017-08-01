@@ -2,7 +2,9 @@ import * as React from 'react';
 import {compose, createStore,applyMiddleware} from 'redux';
 import {persistStore, autoRehydrate} from 'redux-persist'
 import * as localForage from "localforage";
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import thunk from 'redux-thunk';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
@@ -24,12 +26,11 @@ require('./index.html'); //load and emit index.html to destination directory
 const render = (RootComponent: any) => {
 
 
-  //cordova plugins will be loaded by this point
-
   const thunkArgs = {
     isCordova: __IS_CORDOVA_BUILD__,
     platform: __IS_CORDOVA_BUILD__ ? (window as any).device.platform.toLowerCase() : 'browser',
-    nativeSettings: __IS_CORDOVA_BUILD__  ? (window as any).cordova.plugins.settings : null
+    nativeSettings: __IS_CORDOVA_BUILD__  ? (window as any).cordova.plugins.settings : null,
+    appPrefix: __REDUX_PERSIST_PREFIX__
   }
 
   const store = createStore(
@@ -75,11 +76,13 @@ const render = (RootComponent: any) => {
 
     ReactDOM.render(
         <AppContainer>
-          <Provider store={store}>
-            <HashRouter>
-              <RootComponent version={__APP_VERSION__} defaultTitle={"Starter Appz"} appType={'default'} />
-            </HashRouter>
-          </Provider>
+         <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+            <Provider store={store}>
+              <HashRouter>
+                <RootComponent version={__APP_VERSION__} defaultTitle={"Starter App"} appType={'default'} />
+              </HashRouter>
+            </Provider>
+          </MuiThemeProvider>
         </AppContainer>,
         document.getElementById("spaApp")
     );
@@ -87,16 +90,18 @@ const render = (RootComponent: any) => {
 if(__IS_CORDOVA_BUILD__){
   document.addEventListener("deviceready", function(){
 
-    // document.addEventListener("menubutton", onMenuKeyDown, false);
-
        render(App);
   })
 } else {
+
   render(App);
+
+
   // Hot Module Replacement API. Only used when running the dev server.
   if ((module as any).hot) {
     (module as any).hot.accept('./containers/Main', () => {
       render(App);
     });
   }
+
 }

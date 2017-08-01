@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import FavoritesListComponent from '../../components/StoreDemo/ProductFavoritesListPage';
 import {CommandInterface} from '../../res/data/commands';
-import {removeProductFromFavorites} from '../../actions';
+import {removeProductFromFavorites} from '../../actions/storeDemo';
 import {withRouter} from 'react-router-dom';
 
 const stateToProps = (state,ownProps) => {

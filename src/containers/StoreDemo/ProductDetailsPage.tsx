@@ -3,7 +3,8 @@ import CommandDetailsComponent from '../../components/StoreDemo/ProductDetails';
 import {withRouter} from 'react-router-dom';
 import {CommandInterface} from '../../res/data/commands';
 import {isProductFavorite} from '../_helper';
-import {addProductToFavorites,removeProductFromFavorites,sendMessage} from '../../actions'
+import {sendMessage} from '../../actions';
+import {addProductToFavorites,removeProductFromFavorites} from '../../actions/storeDemo'
 
 const stateToProps = (state,ownProps) => {
   const product = state.products[ownProps.match.params.id];

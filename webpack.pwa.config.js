@@ -56,7 +56,7 @@ module.exports = {
           '__DEVTOOLS__': false,
           '__IS_CORDOVA_BUILD__': false,
           '__REDUX_PERSIST_PREFIX__': JSON.stringify('changeMeProd:'),
-          '__APP_VERSION__': JSON.stringify('0.0.0')
+          '__APP_VERSION__': JSON.stringify('1.0.0')
         }),
 
         new CleanWebpackPlugin(['dist'], {

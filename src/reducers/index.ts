@@ -1,32 +1,16 @@
-import {defaultProducts, defaultProductIds} from '../res/data/products';
-
 import {
   SET_PAGE_TITLE,
-  SORT_PRODUCTS,
-  FILTER_PRODUCTS,
   SET_USER_PLATFORM,
-  ADD_PRODUCTS_FAVORITES,
-  REMOVE_PRODUCTS_FAVORITES,
   T2_APP_MESSAGE_CLEAR,
   T2_APP_MESSAGE_START,
   EULA_ACCEPTED,
-  EULA_REJECTED,
-  SET_PRODUCTS_PAGE,
- // SORT_DEFAULT
+  EULA_REJECTED
 } from '../actions';
 import {combineReducers} from 'redux';
-import {arrayPushUnique,arrayRemove} from './_helper';
+//import {arrayPushUnique,arrayRemove} from './_helper';
+import * as demoReducers from './storeDemo';
 
-const defaultFilters = {
-  products: {
-    sortBy: "default",
-    sortDir: "asc",
-    filterText: "",
-    sortText: "",
-    resultsMax: 10,
-    currentPage: 0
-  }
-}
+
 
 const defaultUser = {
   platform: 'unknown'
@@ -53,24 +37,6 @@ const defaultView = {
   }
 }
 
-const filters = (state = defaultFilters, action) => {
-  let newProducts = null;
-  switch (action.type) {
-    case SORT_PRODUCTS:
-      newProducts = {...state.products,sortBy: action.sortBy,sortDir: action.sortDir};
-      state = {...state,products: newProducts};
-      break;
-    case FILTER_PRODUCTS:
-      newProducts = {...state.products,filterText: action.text};
-      state = {...state,products: newProducts};
-      break;
-    case SET_PRODUCTS_PAGE:
-      newProducts = {...state.products,currentPage: action.page};
-      state = {...state,products: newProducts};
-      break;
-  }
-  return state;
-}
 
 
 //Do not persist
@@ -104,14 +70,6 @@ const settings = (state = defaultSettings,action) => {
   return state;
 }
 
-const products = (state = defaultProducts, action) => {
-  return state;
-}
-
-const productIds = (state = defaultProductIds, action) => {
-  return state;
-}
-
 
 const view = (state = defaultView, action) => {
   switch (action.type) {
@@ -128,26 +86,18 @@ const view = (state = defaultView, action) => {
   return state;
 }
 
-const favoriteProductIds = (state = [], action) => {
-  switch (action.type) {
-    case ADD_PRODUCTS_FAVORITES:
-      state = arrayPushUnique(action.id,state);
-      break;
-    case REMOVE_PRODUCTS_FAVORITES:
-      state = arrayRemove(action.id,state);
-      break;
-  }
-  return state;
-}
-
-const reducer = combineReducers({
-  products,
-  productIds,
-  filters,
-  favoriteProductIds,
+const defaultReducers = {
   user,
   view,
   settings
+}
+console.log({
+  ...demoReducers,
+  ...defaultReducers
+});
+const reducer = combineReducers({
+  ...demoReducers,
+  ...defaultReducers
 });
 
 export default reducer;

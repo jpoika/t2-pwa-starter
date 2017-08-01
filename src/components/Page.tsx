@@ -17,6 +17,8 @@ export default class Page extends React.Component<Props, State>{
     titlePath: '',
     leftIcon: null
   }
+
+
   componentWillMount(){
     const {appPage,leftIcon,titlePath,title} = this.props;
     
@@ -27,7 +29,6 @@ export default class Page extends React.Component<Props, State>{
     }
 
     if(title){
-        console.log(title);
         appPage.setPageTitle(title);
     }
   }
