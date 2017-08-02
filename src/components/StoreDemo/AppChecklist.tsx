@@ -6,11 +6,8 @@ export interface Props {
 }
 
 
-export default class HomePage extends React.Component<Props, {}>{
-  componentWillMount(){
-    const {appPage} = this.props;
-    appPage.setPageTitle("ZZZ");
-  }
+export default class AppChecklist extends React.Component<Props, {}>{
+
   render(){
     const {appPage} = this.props;
     const versionChanged = appPage.version !== '0.0.0';

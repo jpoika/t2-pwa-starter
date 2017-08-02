@@ -5,7 +5,12 @@ import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/menu';
 import { Link } from 'react-router-dom';
 
-const LeftMenu = () => {
+export interface Props{
+  basePath: string;
+}
+
+const LeftMenu: React.SFC<Props> = (props) => {
+  const {basePath} = props;
   return (
     <IconMenu
 
@@ -13,8 +18,8 @@ const LeftMenu = () => {
       anchorOrigin={{horizontal: 'left', vertical: 'top'}}
       targetOrigin={{horizontal: 'left', vertical: 'top'}}
     >
-      <MenuItem containerElement={<Link to="/" />} primaryText="Home" />
-      <MenuItem containerElement={<Link to="/store" />} primaryText="Store Demo" />
+      <MenuItem containerElement={<Link to={basePath} />} primaryText="Home" />
+      <MenuItem containerElement={<Link to={basePath+"/products"} />} primaryText="Products" />
     </IconMenu>
     );
 }
