@@ -20,7 +20,7 @@ export const routePageWithProps = (WrappedComponent,props:HOCPageProps,title) =>
     }
 }
 
-export const routeComponentWithProps = (WrappedComponent,props:HOCPageProps) => {
+export const routeComponentWithProps = (WrappedComponent,props) => {
     return (routeProps) => {
       return withPropsComponent(WrappedComponent,{...props,...routeProps});
     }
