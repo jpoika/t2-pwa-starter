@@ -2,13 +2,25 @@ import {createSelector} from 'reselect'
 import {alphaSort} from '../../_helper';
 import {getUser} from '../../selectors'
 export const getProductSearchText = (state) => state.filters.products.filterText;
-
-export const getProducts = (state) => state.productIds.map(hid => state.products[hid]);
+export const getProductsMap = (state) => state.products;
+//export const getProducts = (state) => state.productIds.map(hid => state.products[hid]);
+export const getFavoriteProductIds = (state) => state.favoriteProductIds;
+export const getProductIds = (state) => state.productIds;
 
 export const getProductSortFilter = (state) => state.filters.products;
 
 export const getProductPage = (state) => getProductSortFilter(state).currentPage;
 export const getProductsResultMax = (state) => getProductSortFilter(state).resultsMax;
+
+export const getProducts = createSelector( //just searching titles for now
+  [getProductsMap,getProductIds,getFavoriteProductIds],
+  (productsMap,productIds,favoriteIds) => {
+    return productIds.map((pid) => {
+       const isFavorite = favoriteIds.indexOf(pid) > -1;
+       return {...productsMap[pid],isFavorite: isFavorite};
+    });
+  }
+);
 
 export const searchProducts = createSelector( //just searching titles for now
   [getProducts,getProductSearchText],

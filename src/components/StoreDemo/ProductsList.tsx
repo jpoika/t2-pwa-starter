@@ -1,18 +1,24 @@
 import * as React from 'react';
 import {ProductInterface} from '../../res/data/products';
-import CommandListItem from './ProductListItem';
-import {List} from 'material-ui/List';
-import CommandsPagination from './ProductPagination';
+//import ProductListItem from './ProductListItem';
+import FavoriteCheckbox from '../FavoriteCheckBox';
+//import Pagination from './ProductPagination';
+import {GridList, GridTile} from 'material-ui/GridList';
+
+export interface FavoriteProductInterface extends ProductInterface{
+  isFavorite: boolean;
+}
 
 export interface Props {
-  products: ProductInterface[];
-  addFavorite(product: ProductInterface): void;
+  products: FavoriteProductInterface[];
+  toggleFavorite(item: {id: number,isFavorite: boolean}): void;
   itemClick(product: ProductInterface): void;
   history:{push: any}
   setPage: (pageIdx: number) => void;
   page: number;
   lastPage: number;
   searchText: string;
+  cols?: number;
 }
 
 export interface State {
@@ -20,6 +26,9 @@ export interface State {
 }
 
 export default class ProductsList extends React.Component<Props, State>{
+  public static defaultProps: Partial<Props> = {
+    cols: 2
+  }
 
   constructor(props,context){
     super(props);
@@ -31,8 +40,18 @@ export default class ProductsList extends React.Component<Props, State>{
 
   }
 
+  handleToggleFavorite = (product:FavoriteProductInterface) => {
+    const {toggleFavorite} = this.props;
+    return (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleFavorite(product);
+    }
+  }
+
   render(){
-    const {products,page,lastPage,setPage,searchText} = this.props;
+    const {products,/*page,lastPage,setPage,*/searchText} = this.props;
+    console.log(products);
     if(!products.length){
       let noResultsText = "No Results";
       if(searchText.length > 0){
@@ -42,13 +61,18 @@ export default class ProductsList extends React.Component<Props, State>{
     }
     return <div>
 
-              <List>
-                <CommandsPagination page={page} lastPage={lastPage} setPage={setPage} />
+              <GridList cols={this.props.cols}>
                 {products.map(product => {
-                  return <CommandListItem key={product.id} itemClick={this.handleItemClick} product={product} />
+                  return <GridTile
+                            key={product.id}
+                            title={product.title}
+                            
+                            actionIcon={<FavoriteCheckbox toggleFavorite={this.handleToggleFavorite(product)} checked={product.isFavorite} />}
+                          >
+                            <img key={product.image} src={product.image} />
+                          </GridTile>
                 })}
-                <CommandsPagination page={page} lastPage={lastPage} setPage={setPage} />
-              </List>
+              </GridList>
               
            </div>;
   }

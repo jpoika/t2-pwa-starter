@@ -1,11 +1,11 @@
 import * as React from 'react';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+import ActionFavorite from 'material-ui/svg-icons/toggle/star';
+import ActionFavoriteBorder from 'material-ui/svg-icons/toggle/star-border';
 import IconButton from 'material-ui/IconButton';
 
 export interface Props {
   checked?: boolean;
-  toggleFavorite():void;
+  toggleFavorite(event: any):void;
 }
 
 export interface State {
@@ -17,14 +17,14 @@ export default class FavoriteCheckbox extends React.Component<Props, State>{
      checked: false
   }
 
-  handleToggle = () => {
+  handleToggle = (event) => {
     const {toggleFavorite} = this.props;
-    toggleFavorite();
+    toggleFavorite(event);
   }
   
   render(){
     const {checked} = this.props;
-    const icon = checked ? <ActionFavorite color={"red"} /> : <ActionFavoriteBorder color={"red"} />;
+    const icon = checked ? <ActionFavorite color={"yellow"} /> : <ActionFavoriteBorder color={"white"} />;
                 
 
     return  <IconButton style={{float: 'right'}} onTouchTap={this.handleToggle}>{icon}</IconButton>;
