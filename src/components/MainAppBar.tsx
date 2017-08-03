@@ -1,15 +1,10 @@
-
 import * as React from 'react';
 import AppBar from '../containers/AppBar';
-import DefaultLeftIcon from './LeftMenuIcon';
-import EulaDialog from '../containers/Eula';
-import {routeComponentWithProps} from './AppHOC';
-
-import { Route } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
-import SnackbarGlobal from '../containers/SnackbarGlobal';
-import StoreRoutes from './StoreDemo/StoreRoutes';
 import {AppPageInterface} from './Main';
+import AppRoutes from './AppRoutes';
+import GlobalComponents from './GlobalComponents';
+
 export interface Props {
   setPageTitle(title:string): void;
   history: any;
@@ -32,19 +27,14 @@ class App extends React.Component<Props, State>{
     history.push(this.props.titlePath);
   }
 
-  renderRouteComponent = (Component) => {
-      return routeComponentWithProps(Component,{...this.props, leftIcon: <DefaultLeftIcon />});
-  }
-
   render(){
-
+    const defaultProps = {...this.props,basePath: '/'};
     return <div>
                 <AppBar defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.handleTitleClick} />
 
-                <Route path="/" render={this.renderRouteComponent(StoreRoutes)} />
+                <AppRoutes {...defaultProps} />
   
-                <SnackbarGlobal />
-                <EulaDialog />
+                <GlobalComponents />
             </div>;
  
   }

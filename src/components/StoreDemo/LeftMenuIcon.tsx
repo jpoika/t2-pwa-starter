@@ -18,7 +18,8 @@ const LeftMenu: React.SFC<Props> = (props) => {
       anchorOrigin={{horizontal: 'left', vertical: 'top'}}
       targetOrigin={{horizontal: 'left', vertical: 'top'}}
     >
-      <MenuItem containerElement={<Link to={basePath} />} primaryText="Home" />
+      <MenuItem containerElement={<Link to={'/'} />} primaryText="Home" />
+      <MenuItem containerElement={<Link to={basePath} />} primaryText="Demo Home" />
       <MenuItem containerElement={<Link to={basePath+"/products"} />} primaryText="Products" />
     </IconMenu>
     );

@@ -17,8 +17,12 @@ export interface State {
 
 }
 
-export default class ProductDetailsPage extends React.Component<Props, State>{
+export default class ProductDetails extends React.Component<Props, State>{
 
+  componentWillMount(){
+      const {product,appPage} = this.props;
+      appPage.setPageTitle(product.title);
+  }
 
   handleSetToggle = () => {
     const {toggleFavorite,isFavorite,product,sendMessage} = this.props;
