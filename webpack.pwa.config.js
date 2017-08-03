@@ -5,6 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin'),
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var OfflinePlugin = require('offline-plugin');  
 const buildPath = path.resolve(__dirname, 'dist'); 
+const baseConfig = require('./webpack.config.js')
 module.exports = {
     entry: [
         'babel-polyfill',
@@ -19,34 +20,9 @@ module.exports = {
     // Enable sourcemaps for debugging webpack's output.
     devtool: 'inline-source-map',
 
-    resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
-    },
+    resolve: baseConfig.resolve,
 
-    module: {
-        rules: [
-        
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            {test: /\.tsx?$/, use: ['awesome-typescript-loader'] },
-
-            {
-                test: /\.(png|gif|jpe?g|svg)$/i,
-                use: ['url-loader?limit=2']
-            },
-            {
-                test: /\.css$/,
-                use: [ 'file-loader' ]
-            },
-            {
-              test: /\.(html|json)$/,
-              loader: PathRewriterPlugin.rewriteAndEmit({
-                name: '[name].[ext]'
-              })
-            }
-
-        ]
-    },
+    module: baseConfig.module,
 
     plugins: [
         new webpack.DefinePlugin({
