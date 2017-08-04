@@ -25,7 +25,7 @@ export default class Eula extends React.Component<MyProps, MyState> {
   componentDidMount(){
     setTimeout(() => {
       this.setState({suppressOpen: false});
-    },2000);
+    },1000);
   }
 
   render(){
