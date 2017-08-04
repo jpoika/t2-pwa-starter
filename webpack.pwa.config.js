@@ -6,6 +6,8 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var OfflinePlugin = require('offline-plugin');  
 const buildPath = path.resolve(__dirname, 'dist'); 
 const baseConfig = require('./webpack.config.js')
+
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
     entry: [
         'babel-polyfill',
@@ -50,6 +52,8 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         new PathRewriterPlugin(),
-        new OfflinePlugin()
+        new OfflinePlugin({
+          excludes: ['**/.*', '**/*.map','stats.json']
+        })
     ]
 };

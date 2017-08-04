@@ -1,7 +1,7 @@
 import * as React from 'react';
-import MainAppBar from './MainAppBar';
+const loadMainAppBar = require('bundle-loader?lazy!./MainAppBar');
 import LeftMenuIcon from './LeftMenuIcon';
-
+import Bundle from './Bundle';
 export interface AppPageInterface {
   screen:{width: number, height: number, orientation: string};
   setMainIcon(icon: JSX.Element): void;
@@ -111,6 +111,9 @@ export default class Main extends React.Component<Props, State>{
     }
   }
   render(){
-    return <MainAppBar appPage={this.getAppPageObject()} {...this.state} />
+    //return <MainAppBar appPage={this.getAppPageObject()} {...this.state} />
+    return <Bundle load={loadMainAppBar}>
+      {(LayoutComp) => (<LayoutComp appPage={this.getAppPageObject()} {...this.state} />)}
+    </Bundle>
   }
 }

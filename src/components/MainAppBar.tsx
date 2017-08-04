@@ -2,8 +2,10 @@ import * as React from 'react';
 import AppBar from '../containers/AppBar';
 import {withRouter} from 'react-router-dom';
 import {AppPageInterface} from './Main';
-import AppRoutes from './AppRoutes';
-import GlobalComponents from './GlobalComponents';
+import Bundle from './Bundle';
+const  loadAppRoutes = require('bundle-loader?lazy!./AppRoutes');
+const  loadGlobalComponents = require('bundle-loader?lazy!./GlobalComponents');
+
 
 export interface Props {
   setPageTitle(title:string): void;
@@ -32,9 +34,19 @@ class App extends React.Component<Props, State>{
     return <div>
                 <AppBar defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.handleTitleClick} />
 
-                <AppRoutes {...defaultProps} />
-  
-                <GlobalComponents />
+               
+                    <Bundle load={loadAppRoutes}>
+                      {(AppRoutes) => (AppRoutes
+                        ? <AppRoutes {...defaultProps} />
+                        : null
+                      )}
+                    </Bundle>
+                    <Bundle load={loadGlobalComponents}>
+                      {(GlobalComponents) => (GlobalComponents
+                        ? <GlobalComponents />
+                        : null
+                      )}
+                    </Bundle>
             </div>;
  
   }

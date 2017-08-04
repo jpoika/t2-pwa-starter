@@ -3,7 +3,6 @@
  */
 import * as React from 'react';
 import  Page, {Props as PageProps} from './Page';
-
 interface HOCPageProps extends PageProps{
   basePath: string;
 }
