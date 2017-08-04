@@ -21,7 +21,7 @@ OfflinePluginRuntime.install();
 injectTapEventPlugin();
 
 require('./index.html'); //load and emit index.html to destination directory
-
+require('./manifest.json'); //load and emit manifest.json to destination directory
 
 const render = (RootComponent: any) => {
 
