@@ -2,7 +2,9 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin'),
     PathRewriterPlugin = require('webpack-path-rewriter');
-    
+var StringReplacePlugin = require("string-replace-webpack-plugin");
+var appConfig = require('./app.config.js');
+
 module.exports = {
     entry: [
         'babel-polyfill',
@@ -55,8 +57,19 @@ module.exports = {
               loader: PathRewriterPlugin.rewriteAndEmit({
                 name: '[name].[ext]'
               })
+            },
+            { 
+                test: /\.(html|json)$/,
+                loader: StringReplacePlugin.replace({
+                    replacements: [
+                        {
+                            pattern: /<!-- @app_build (\w*?) -->/ig,
+                            replacement: function (match, p1, offset, string) {
+                                return appConfig[p1];
+                            }
+                        }
+                    ]})
             }
-
         ]
     },
 
@@ -67,8 +80,8 @@ module.exports = {
           },
           '__DEVTOOLS__': true,
           '__IS_CORDOVA_BUILD__': false,
-          '__REDUX_PERSIST_PREFIX__': JSON.stringify('changeMeDev:'),
-          '__APP_VERSION__': JSON.stringify('1.0.0')
+          '__REDUX_PERSIST_PREFIX__': JSON.stringify(appConfig.dbPrefix),
+          '__APP_VERSION__': JSON.stringify(appConfig.version)
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),

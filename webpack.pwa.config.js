@@ -8,6 +8,8 @@ const buildPath = path.resolve(__dirname, 'dist');
 const baseConfig = require('./webpack.config.js')
 
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+var appConfig = require('./app.config.js');
 module.exports = {
     entry: [
         'babel-polyfill',
@@ -33,8 +35,8 @@ module.exports = {
           },
           '__DEVTOOLS__': false,
           '__IS_CORDOVA_BUILD__': false,
-          '__REDUX_PERSIST_PREFIX__': JSON.stringify('changeMeProd:'),
-          '__APP_VERSION__': JSON.stringify('1.0.0')
+          '__REDUX_PERSIST_PREFIX__': JSON.stringify(appConfig.dbPrefix),
+          '__APP_VERSION__': JSON.stringify(appConfig.version)
         }),
 
         new CleanWebpackPlugin(['dist'], {

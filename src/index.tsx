@@ -22,6 +22,7 @@ injectTapEventPlugin();
 
 require('./index.html'); //load and emit index.html to destination directory
 require('./manifest.json'); //load and emit manifest.json to destination directory
+require("file-loader?name=[name].[ext]!./favicon.ico");
 
 const render = (RootComponent: any) => {
 

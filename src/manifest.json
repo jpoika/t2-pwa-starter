@@ -1,10 +1,10 @@
 {
-  "name": "App Name Full",
-  "short_name": "App Short Full",
+  "name": "<!-- @app_build name -->",
+  "short_name": "<!-- @app_build name_long -->",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#FF9800",
-  "theme_color": "#3F51B5",
+  "background_color": "<!-- @app_build background_color -->",
+  "theme_color": "<!-- @app_build theme_color -->",
   "description": "A description of the app",
   "icons": [{
     "src": "[[./res/images/ui/app_icon_48.png]]",
