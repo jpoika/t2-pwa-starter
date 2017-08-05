@@ -35,9 +35,12 @@ export default class ProductsList extends React.Component<Props, State>{
   }
 
   handleItemClick = (product) => {
-      const {itemClick} = this.props;
+    const {itemClick} = this.props;
+    return (event) => {
+      event.preventDefault();
+      event.stopPropagation();
       itemClick(product);
-
+    }
   }
 
   handleToggleFavorite = (product:FavoriteProductInterface) => {
@@ -66,7 +69,7 @@ export default class ProductsList extends React.Component<Props, State>{
                   return <GridTile
                             key={product.id}
                             title={product.title}
-                            
+                            onTouchTap={this.handleItemClick(product)}
                             actionIcon={<FavoriteCheckbox toggleFavorite={this.handleToggleFavorite(product)} checked={product.isFavorite} />}
                           >
                             <img key={product.image} src={product.image} />

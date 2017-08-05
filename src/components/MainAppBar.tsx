@@ -34,7 +34,7 @@ class App extends React.Component<Props, State>{
     return <div>
                 <AppBar defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.handleTitleClick} />
 
-               
+                <div style={{padding: 10}}>
                     <Bundle load={loadAppRoutes}>
                       {(AppRoutes) => (AppRoutes
                         ? <AppRoutes {...defaultProps} />
@@ -47,6 +47,7 @@ class App extends React.Component<Props, State>{
                         : null
                       )}
                     </Bundle>
+                 </div>
             </div>;
  
   }

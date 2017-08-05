@@ -2,8 +2,8 @@ import * as React from 'react';
 import {ProductInterface} from '../../res/data/products';
 import {AppPageInterface} from '../Main';
 import FavoriteCheckbox from '../FavoriteCheckBox';
+import {Card, /*CardActions, CardHeader,*/ CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-import {greyContainer,whiteContainer} from '../commonStyles';
 
 export interface Props {
   product: ProductInterface;
@@ -36,14 +36,24 @@ export default class ProductDetails extends React.Component<Props, State>{
   render(){
     const {product,isFavorite} = this.props;
 
- 
-    return <div style={whiteContainer}>
-              <div style={{greyContainer}}>
-                <FavoriteCheckbox toggleFavorite={this.handleSetToggle()} checked={isFavorite} />
-                <div>{product.title}</div>
-                
-              </div>
-    </div>
+   
+    return   <Card style={{maxWidth: 500,margin: '0px auto 0px auto'}}>
+    <CardMedia
+      overlay={<CardTitle title={<div>${product.price}
+
+      <div style={{position: 'absolute',top: 10, right: 0}}>
+      <FavoriteCheckbox toggleFavorite={this.handleSetToggle()} checked={isFavorite} />
+      </div>
+      </div>}  />}
+    >
+      <img  src={product.image} alt="" />
+    </CardMedia>
+    <CardTitle title={product.title} subtitle="By ACME" />
+    <CardText>
+        <div>{product.description}</div>
+        
+    </CardText>
+  </Card>
   }
 }
 

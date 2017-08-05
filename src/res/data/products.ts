@@ -12,28 +12,28 @@ export interface ProductInterface{
 }
 
 
-export const makeProduct = (id:number,title:string,price:number,image: string,description:string = ''):ProductInterface => {
+export const makeProduct = (id:number,title:string,price:number,imageName: string,description:string = ''):ProductInterface => {
   return {
     id,
     title,
     price,
-    image,
+    image: require('../images/StoreDemo/products/square/' + imageName),
     description
   }
 };
 
-//
+const oscDesc = `The ultimate debugging tool for electronics, this oscilloscope will turn you into a "Circuit Whisperer". You will be able to peer into the workings of your circuits to better understand them. Difficult problems will suddenly become trivial. We tried many beginner oscilloscopes and found this one to be a perfect balance of price and function for anyone looking to to examine signals lower than 50MHz and in need of 4 channels.  At this price, it's perfect as a 'first scope' or as a hacker-space resource to share - and can be used for years as your projects get more complicated.`;
 const productsData = [
-  makeProduct(1,'Toy Car',9.99,require('../images/StoreDemo/products/square/toy_car.jpg')),
-  makeProduct(2,'Doll',19.99,require('../images/StoreDemo/products/square/doll.jpg')),
-  makeProduct(3,'RC Helicopter',59.99,require('../images/StoreDemo/products/square/rc_heli.jpg')),
-  makeProduct(4,'Coffee Grinder',26.99,require('../images/StoreDemo/products/square/coffee-grinder.jpg')),
-  makeProduct(5,'Rigol Oscilloscope',355.99,require('../images/StoreDemo/products/square/rigol_osc.jpg')),
-  makeProduct(6,'Beach Towel',19.99,require('../images/StoreDemo/products/square/beach_towel.jpg')),
-  makeProduct(7,'Ear Plugs',6.99,require('../images/StoreDemo/products/square/plugs.jpg')),
-  makeProduct(8,'Desk Lamp',15.99,require('../images/StoreDemo/products/square/desk_lamp.jpg')),
-  makeProduct(9,'Dune Buggy',12000,require('../images/StoreDemo/products/square/dune_buggy.jpg')),
-  makeProduct(10,'Gift Card',20.00,require('../images/StoreDemo/products/square/gift_card.jpg'))
+  makeProduct(1,'Toy Car',9.99,'toy_car.jpg','Vroom Vroom'),
+  makeProduct(2,'Doll',19.99, 'doll.jpg', "Goo Goo Ga Ga"),
+  makeProduct(3,'RC Helicopter',59.99,'rc_heli.jpg',"Yay helicopter"),
+  makeProduct(4,'Coffee Grinder',26.99, 'coffee-grinder.jpg',"For to make coffee"),
+  makeProduct(5,'Rigol Oscilloscope',355.99,'rigol_osc.jpg',oscDesc),
+  makeProduct(6,'Beach Towel',19.99, 'beach_towel.jpg', "Don't forget to bring a towel"),
+  makeProduct(7,'Ear Plugs',6.99,'plugs.jpg',"So you don't have to listen"),
+  makeProduct(8,'Desk Lamp',15.99, 'desk_lamp.jpg',"Shine a light on this"),
+  makeProduct(9,'Dune Buggy',12000, 'dune_buggy.jpg', ""),
+  makeProduct(10,'Gift Card',20.00,'gift_card.jpg',"Yep")
 ];
 
 export const normalizedProducts = normalize(productsData, productArraySchema);

@@ -27,6 +27,6 @@ export default class FavoriteCheckbox extends React.Component<Props, State>{
     const icon = checked ? <ActionFavorite color={"yellow"} /> : <ActionFavoriteBorder color={"white"} />;
                 
 
-    return  <IconButton style={{float: 'right'}} onTouchTap={this.handleToggle}>{icon}</IconButton>;
+    return  <IconButton onTouchTap={this.handleToggle}>{icon}</IconButton>;
   }
 }
