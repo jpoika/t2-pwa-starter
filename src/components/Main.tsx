@@ -1,10 +1,13 @@
 import * as React from 'react';
 const loadMainAppBar = require('bundle-loader?lazy!./MainAppBar');
-import LeftMenuIcon from './LeftMenuIcon';
 import Bundle from './Bundle';
+// import MainAppBar from './MainAppBar';
+import LeftMenuIcon from './LeftMenuIcon';
+
 export interface AppPageInterface {
   screen:{width: number, height: number, orientation: string};
   setMainIcon(icon: JSX.Element): void;
+  setRightIcon(icon: JSX.Element): void;
   setPageTitle(title:string): void;
   setTitlePath(titlePath:string):void;
   history: any;
@@ -16,6 +19,7 @@ export interface Props {
   history: any;
   version: string;
   leftIcon: JSX.Element;
+  rightIcon: JSX.Element;
 }
 
 export interface State {
@@ -23,11 +27,13 @@ export interface State {
   title: string;
   leftIcon: JSX.Element;
   titlePath: string;
+  rightIcon: JSX.Element;
 }
 
 export default class Main extends React.Component<Props, State>{
   static defaultProps: Partial<Props> = {
-    leftIcon: <LeftMenuIcon />
+    leftIcon: <LeftMenuIcon />,
+    rightIcon: null
   }
   constructor(props){
     super(props);
@@ -35,19 +41,22 @@ export default class Main extends React.Component<Props, State>{
       screen: this.getScreenDimensions(),
       title: props.title,
       leftIcon: this.props.leftIcon,
-      titlePath: '/'
+      titlePath: '/',
+      rightIcon: this.props.rightIcon
     }
   }
 
   handleSetMainIcon = (leftIcon: JSX.Element) => {
-    console.log(leftIcon);
     this.setState({leftIcon})
   }
 
-  handleSetTitlePath = (titlePath: string) => {
-    this.setState({titlePath})
+  handleSetRightIcon = (rightIcon: JSX.Element) => {
+    this.setState({rightIcon})
   }
 
+  handleSetTitlePath = (titlePath: string) => {
+    //this.setState({titlePath})
+  }
 
   componentDidMount(){
     this.handlePageResize();
@@ -107,13 +116,16 @@ export default class Main extends React.Component<Props, State>{
       setPageTitle,
       history,
       setTitlePath: this.handleSetTitlePath,
-      version: this.props.version
+      version: this.props.version,
+      setRightIcon: this.handleSetRightIcon
     }
   }
   render(){
     //return <MainAppBar appPage={this.getAppPageObject()} {...this.state} />
-    return <Bundle load={loadMainAppBar}>
-      {(LayoutComp) => (<LayoutComp appPage={this.getAppPageObject()} {...this.state} />)}
+    return <Bundle load={loadMainAppBar} >
+      {(LayoutComp) => {
+          return <LayoutComp appPage={this.getAppPageObject()} {...this.state} />
+        }}
     </Bundle>
   }
 }

@@ -19,7 +19,7 @@ class AppRoutes extends React.Component<Props, State>{
 
 
   renderRouteComponent = (Component) => {
-      return routeComponentWithProps(Component,{...this.props, leftIcon: <DefaultLeftIcon />});
+      return routeComponentWithProps(Component,{...this.props, leftIcon: <DefaultLeftIcon />, rightIcon: null});
   }
 
   render(){

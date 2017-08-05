@@ -91,10 +91,7 @@ const defaultReducers = {
   view,
   settings
 }
-console.log({
-  ...demoReducers,
-  ...defaultReducers
-});
+
 const reducer = combineReducers({
   ...demoReducers,
   ...defaultReducers

@@ -13,6 +13,7 @@ export interface Props {
   screen:{width: number, height: number,orientation: string}
   title: string;
   leftIcon: JSX.Element;
+  rightIcon: JSX.Element;
   titlePath: string;
   appPage: AppPageInterface;
 }
@@ -20,7 +21,7 @@ export interface Props {
 export interface State {
 
 }
-class App extends React.Component<Props, State>{
+class MainAppBar extends React.Component<Props, State>{
 
   handleTitleClick = (event) => {
     event.preventDefault();
@@ -32,7 +33,7 @@ class App extends React.Component<Props, State>{
   render(){
     const defaultProps = {...this.props,basePath: '/'};
     return <div>
-                <AppBar defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.handleTitleClick} />
+                <AppBar rightIcon={this.props.rightIcon} defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.handleTitleClick} />
 
                 <div style={{padding: 10}}>
                     <Bundle load={loadAppRoutes}>
@@ -53,4 +54,4 @@ class App extends React.Component<Props, State>{
   }
 }
 
-export default withRouter(App);
+export default withRouter(MainAppBar);

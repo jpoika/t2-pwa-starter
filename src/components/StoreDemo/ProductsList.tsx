@@ -4,7 +4,9 @@ import {ProductInterface} from '../../res/data/products';
 import FavoriteCheckbox from '../FavoriteCheckBox';
 //import Pagination from './ProductPagination';
 import {GridList, GridTile} from 'material-ui/GridList';
+import RightIcon from '../RightIcon';
 
+import {AppPageInterface} from '../Main'
 export interface FavoriteProductInterface extends ProductInterface{
   isFavorite: boolean;
 }
@@ -19,6 +21,7 @@ export interface Props {
   lastPage: number;
   searchText: string;
   cols?: number;
+  appPage:AppPageInterface;
 }
 
 export interface State {
@@ -43,6 +46,10 @@ export default class ProductsList extends React.Component<Props, State>{
     }
   }
 
+  componentWillMount(){
+    this.props.appPage.setRightIcon(<RightIcon />);
+  }
+
   handleToggleFavorite = (product:FavoriteProductInterface) => {
     const {toggleFavorite} = this.props;
     return (event) => {
@@ -53,16 +60,17 @@ export default class ProductsList extends React.Component<Props, State>{
   }
 
   render(){
-    const {products,/*page,lastPage,setPage,*/searchText} = this.props;
-    console.log(products);
-    if(!products.length){
-      let noResultsText = "No Results";
-      if(searchText.length > 0){
-        noResultsText += ` for "${searchText}"`
-      }
-      return <h3>{noResultsText}</h3>;
-    }
+    const {products/*page,lastPage,setPage,*/} = this.props;
+    
+    // if(!products.length){
+    //   let noResultsText = "No Results";
+    //   if(searchText.length > 0){
+    //     noResultsText += ` for "${searchText}"`
+    //   }
+    //   return <h3>{noResultsText}</h3>;
+    // }
     return <div>
+
 
               <GridList cols={this.props.cols}>
                 {products.map(product => {

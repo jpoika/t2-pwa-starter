@@ -6,7 +6,7 @@ test('Test AppBar Snapshot', () => {
 
   const component = renderer.create(
     <MuiThemeProvider>
-        <AppBar title="phony title" leftIcon={null}  onTitleClick={(event: any) => {}} /> />
+        <AppBar rightIcon={null} title="phony title" leftIcon={null}  onTitleClick={(event: any) => {}} /> />
     </MuiThemeProvider>
   );
   let tree = component.toJSON();

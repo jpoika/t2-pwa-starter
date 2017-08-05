@@ -3,6 +3,7 @@ import {AppPageInterface} from './Main';
 export interface Props {
   appPage: AppPageInterface;
   leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
   titlePath?: string; //the path navigated to when appbar title is clicked
   title?: string;
 }
@@ -15,12 +16,14 @@ export default class Page extends React.Component<Props, State>{
   static defaultProps: Partial<Props> = {
     title: '',
     titlePath: '',
-    leftIcon: null
+    leftIcon: null,
+    rightIcon: null
   }
 
 
   componentWillMount(){
-    const {appPage,leftIcon,titlePath,title} = this.props;
+    const {appPage,leftIcon,titlePath,title,rightIcon} = this.props;
+    appPage.setRightIcon(rightIcon);
     
     appPage.setMainIcon(leftIcon);
 

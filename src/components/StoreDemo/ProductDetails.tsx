@@ -41,9 +41,9 @@ export default class ProductDetails extends React.Component<Props, State>{
     <CardMedia
       overlay={<CardTitle title={<div>${product.price}
 
-      <div style={{position: 'absolute',top: 10, right: 0}}>
-      <FavoriteCheckbox toggleFavorite={this.handleSetToggle()} checked={isFavorite} />
-      </div>
+        <div style={{position: 'absolute',top: 10, right: 0}}>
+          <FavoriteCheckbox toggleFavorite={this.handleSetToggle()} checked={isFavorite} />
+        </div>
       </div>}  />}
     >
       <img  src={product.image} alt="" />

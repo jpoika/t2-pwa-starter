@@ -5,7 +5,8 @@ import AppBarComponent from '../components/AppBar';
 const stateToProps = (state,ownProps) => {
   return {
     title: state.view.page.title || ownProps.defaultTitle,
-    leftIcon: ownProps.leftIcon
+    leftIcon: ownProps.leftIcon,
+    rightIcon: ownProps.rightIcon
   }
 }
 const dispatchToProps = (dispatch,ownProps) => {
