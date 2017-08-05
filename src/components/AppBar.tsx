@@ -28,7 +28,6 @@ export default class AppTheme extends React.Component<Props, State>{
 
   render(){
     const {title,leftIcon,onTitleClick,rightIcon} = this.props;
-    console.log(this.props);
     return <MuiAppBar
               titleStyle={appBarTitleStyle} 
               iconStyleLeft={appBarIconeStyle}

@@ -55,7 +55,7 @@ export default class Main extends React.Component<Props, State>{
   }
 
   handleSetTitlePath = (titlePath: string) => {
-    //this.setState({titlePath})
+    this.setState({titlePath})
   }
 
   componentDidMount(){

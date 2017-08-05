@@ -24,7 +24,7 @@ export default class Page extends React.Component<Props, State>{
   componentWillMount(){
     const {appPage,leftIcon,titlePath,title,rightIcon} = this.props;
     appPage.setRightIcon(rightIcon);
-    
+
     appPage.setMainIcon(leftIcon);
 
     if(titlePath){

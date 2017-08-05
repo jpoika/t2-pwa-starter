@@ -36,7 +36,7 @@ export const backIcon = (path:string = '/') => {
       return <BackButton path={path} />;
 }
 
-export const leftIconProps = (path:string = '/'): {leftIcon: JSX.Element, titlePath: string} => {
+export const leftIconProps = (path:string): {leftIcon: JSX.Element, titlePath: string} => {
 
       return {
                 leftIcon: backIcon(path),

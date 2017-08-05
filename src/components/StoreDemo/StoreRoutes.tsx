@@ -23,7 +23,7 @@ class StoreRoutes extends React.Component<Props, {}>{
     return <div>
                 <Route exact path={basePath} render={routePageWithProps(HomePage, {...defaultProps,leftIcon: leftMenuIcon}, "Demo Home")} />
                 <Route exact path={basePath + '/products'} render={routePageWithProps(ProductsList, defaultProps,"Products")} />
-                <Route exact path={basePath + '/products/:id'} render={routePageWithProps(ProductDetailsPage, {...defaultProps, ...leftIconProps(basePath + '/products')},"Details")} />
+                <Route exact path={basePath + '/products/:id'} render={routePageWithProps(ProductDetailsPage, {...defaultProps,/* //TODO */ ...leftIconProps(basePath + '/products')},"Details")} />
            </div>;
  
   }
