@@ -40,7 +40,7 @@ const render = (RootComponent: any) => {
       compose(
         applyMiddleware(thunk.withExtraArgument(thunkArgs)),
         autoRehydrate()
-      )
+      ) as any
     );
 
 

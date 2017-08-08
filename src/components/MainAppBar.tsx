@@ -12,6 +12,7 @@ export interface Props {
   history: any;
   screen:{width: number, height: number,orientation: string}
   title: string;
+  defaultTitle: string;
   leftIcon: JSX.Element;
   rightIcon: JSX.Element;
   titlePath: string;

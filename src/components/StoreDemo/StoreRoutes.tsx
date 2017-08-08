@@ -5,7 +5,7 @@ import HomePage from "./HomePage";
 import {AppPageInterface} from '../Main';
 import LeftMenuIcon from './LeftMenuIcon'
 import {routePageWithProps,menuItem,leftIconProps} from '../AppHOC';
-import ProductDetailsPage from '../../containers/StoreDemo/ProductDetailsPage';
+import ProductDetails from '../../containers/StoreDemo/ProductDetails';
 import ProductsList from '../../containers/StoreDemo/ProductsList';
 export interface Props {
   appPage: AppPageInterface;
@@ -23,7 +23,7 @@ class StoreRoutes extends React.Component<Props, {}>{
     return <div>
                 <Route exact path={basePath} render={routePageWithProps(HomePage, {...defaultProps,leftIcon: leftMenuIcon}, "Demo Home")} />
                 <Route exact path={basePath + '/products'} render={routePageWithProps(ProductsList, defaultProps,"Products")} />
-                <Route exact path={basePath + '/products/:id'} render={routePageWithProps(ProductDetailsPage, {...defaultProps,/* //TODO */ ...leftIconProps(basePath + '/products')},"Details")} />
+                <Route exact path={basePath + '/products/:id'} render={routePageWithProps(ProductDetails, {...defaultProps,/* //TODO */ ...leftIconProps(basePath + '/products')},"Details")} />
            </div>;
  
   }

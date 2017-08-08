@@ -23,7 +23,7 @@ const getTitleIcon = (title) => {
          </div>;
 }
 
-export default class AppTheme extends React.Component<Props, State>{
+export default class AppBar extends React.Component<Props, State>{
 
 
   render(){

@@ -6,6 +6,7 @@ import  Page, {Props as PageProps} from './Page';
 import BackButton from './BackButton';
 interface HOCPageProps extends PageProps{
   basePath: string;
+  [propName: string]: any;
 }
 
 const withPropsComponent = (WrappedComponent,props) => {

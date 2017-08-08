@@ -27,6 +27,7 @@ const dispatchToProps = (dispatch) => {
   }
   
 }
+
 export default connect(
   stateToProps,
   dispatchToProps)

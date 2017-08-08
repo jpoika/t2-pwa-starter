@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import ProductsListComponent from '../../components/StoreDemo/ProductsList';
+import ProductsListComponent,{FavoriteProductInterface} from '../../components/StoreDemo/ProductsList';
 import {ProductInterface} from '../../res/data/products';
 import {withRouter} from 'react-router-dom';
 import {getProductsAdvancedPaged, getProductSearchText,getProductPage,getProductsPageMax} from './selectors';
@@ -22,7 +22,28 @@ const calColumns = (state,ownProps) => {
   return 2;
 }
 
-const stateToProps = (state,ownProps) => {
+interface DispatchToPropsInterface{
+    itemClick: (product: ProductInterface) => void;
+    setPage: (pageIdx: number) => void;
+    toggleFavorite: (product: FavoriteAble) => void;
+}
+
+
+interface StateToPropsInterface{
+    products: FavoriteProductInterface[];
+    searchText: string;
+    page: number;
+    lastPage: number;
+    cols?: number;
+}
+
+interface OwnPropsInterface{
+   basePath?: string;
+   history:{push: any};
+   appPage: any;
+}
+
+const stateToProps = (state,ownProps):StateToPropsInterface => {
   return {
     products: getProductsAdvancedPaged(state),
     searchText: getProductSearchText(state),
@@ -40,7 +61,7 @@ const dispatchToProps = (dispatch,ownProps) => {
     setPage: (pageIdx: number) => {
       dispatch(setProductPage(pageIdx));
     },
-    toggleFavorite: (product: FavoriteAble) => {
+    toggleFavorite: (product: FavoriteProductInterface) => {
       if(product.isFavorite){
         dispatch(removeProductFromFavorites(product.id));
       } else {
@@ -50,4 +71,8 @@ const dispatchToProps = (dispatch,ownProps) => {
   }
 }
 
-export default withRouter(connect(stateToProps,dispatchToProps)(ProductsListComponent));
+export default withRouter(connect<StateToPropsInterface,DispatchToPropsInterface,OwnPropsInterface>(stateToProps,dispatchToProps)(ProductsListComponent));
+
+
+
+

@@ -20,6 +20,8 @@ export interface Props {
   version: string;
   leftIcon: JSX.Element;
   rightIcon: JSX.Element;
+  title: string;
+  appType: string;
 }
 
 export interface State {

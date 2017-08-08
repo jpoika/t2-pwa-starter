@@ -12,11 +12,13 @@ export interface FavoriteProductInterface extends ProductInterface{
 }
 
 export interface Props {
-  products: FavoriteProductInterface[];
-  toggleFavorite(item: {id: number,isFavorite: boolean}): void;
+  
   itemClick(product: ProductInterface): void;
-  history:{push: any}
   setPage: (pageIdx: number) => void;
+  toggleFavorite(item: FavoriteProductInterface): void;
+
+  history:{push: any}
+  products: FavoriteProductInterface[];
   page: number;
   lastPage: number;
   searchText: string;
