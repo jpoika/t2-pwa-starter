@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import MainContent from './MainContent';
 import {AppPageInterface} from './Main';
+import AppBar from '../containers/AppBar';
 // const styles = {
 //   headline: {
 //     fontSize: 24,
@@ -21,6 +22,7 @@ export interface Props {
   appPage: AppPageInterface;
   tabId: string | number;
   tabsId: string | number;
+  onTitleClick: (event: any) => void;
 }
 
 export interface State {
@@ -40,6 +42,7 @@ export default class MainTabs extends React.Component<any,any> {
     const defaultProps = {...this.props,basePath: '/'};
     return (
       <div>
+        <AppBar rightIcon={this.props.rightIcon} defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.props.onTitleClick} />
         <Tabs
           value={this.props.tabId}
           onChange={this.handleChange}

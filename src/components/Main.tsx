@@ -89,6 +89,13 @@ export default class Main extends React.Component<Props, State>{
     }
   }
 
+  handleTitleClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const {history} = this.props;
+    history.push(this.state.titlePath);
+  }
+
   hasScreenChanged = () => {
     const {width, height} = this.state.screen;
     const currentDims = this.getScreenDimensions();
@@ -145,7 +152,7 @@ export default class Main extends React.Component<Props, State>{
     //async loading
     return <Bundle load={loadComponent} >
       {(LayoutComp) => {
-          return <LayoutComp appPage={this.getAppPageObject()} {...this.state} />
+          return <LayoutComp appPage={this.getAppPageObject()} {...this.state} onTitleClick={this.handleTitleClick} />
         }}
     </Bundle>
   }

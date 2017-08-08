@@ -6,5 +6,6 @@ module.exports = {
     version: appVersion,
     theme_color: '#3F51B5',
     background_color: "#FF9800",
-    dbPrefix: 'changeMeDev:'
+    dbPrefix: 'changeMeDev:',
+    appType: 'tabs' //options are: tabs|default
 }

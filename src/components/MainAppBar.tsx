@@ -15,6 +15,7 @@ export interface Props {
   rightIcon: JSX.Element;
   titlePath: string;
   appPage: AppPageInterface;
+  onTitleClick: (event: any) => void;
 }
 
 export interface State {
@@ -32,7 +33,9 @@ class MainAppBar extends React.Component<Props, State>{
   render(){
     const defaultProps = {...this.props,basePath: '/'};
     return <div>
-                <AppBar rightIcon={this.props.rightIcon} defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.handleTitleClick} />
+                <AppBar rightIcon={this.props.rightIcon} 
+                defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} 
+                onTitleClick={this.props.onTitleClick} />
 
                 <div style={{padding: 10}}>
 

@@ -12,3 +12,5 @@ declare const __REDUX_PERSIST_PREFIX__: string;
 
 declare const __APP_VERSION__: string;
 
+declare const __APP_TYPE__: string;
+
