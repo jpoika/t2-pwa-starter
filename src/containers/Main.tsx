@@ -36,4 +36,4 @@ interface StateToProps{
   title: string;
 }
                                                                                                                               //            
-export default withRouter(connect<StateToProps,DispPropsInterface,OwnProps>(stateToProps,dispatchToProps)(MainComponent));
+export default withRouter<{turkeyLurkey: boolean}>(connect<StateToProps,DispPropsInterface,OwnProps>(stateToProps,dispatchToProps)(MainComponent));

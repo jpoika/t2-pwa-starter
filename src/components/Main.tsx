@@ -1,5 +1,6 @@
 import * as React from 'react';
 const loadMainAppBar = require('bundle-loader?lazy!./MainAppBar');
+const loadMainTabs = require('bundle-loader?lazy!./MainTabs');
 import Bundle from './Bundle';
 // import MainAppBar from './MainAppBar';
 import LeftMenuIcon from './LeftMenuIcon';
@@ -123,8 +124,10 @@ export default class Main extends React.Component<Props, State>{
     }
   }
   render(){
-    //return <MainAppBar appPage={this.getAppPageObject()} {...this.state} />
-    return <Bundle load={loadMainAppBar} >
+ 
+    const loadComponent =  this.props.appType === 'tabs' ? loadMainTabs : loadMainAppBar;
+    //async loading
+    return <Bundle load={loadComponent} >
       {(LayoutComp) => {
           return <LayoutComp appPage={this.getAppPageObject()} {...this.state} />
         }}

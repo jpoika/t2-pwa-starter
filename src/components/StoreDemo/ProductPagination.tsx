@@ -31,6 +31,14 @@ export default class CommandsPagination extends React.Component<Props, State>{
     setPage(page - 1);
   }
 
+  prevPage = (event) => { // Alias method
+    this.onShowLess(event);
+  }
+
+  nextPage = (event) => { // Alias method
+    this.onShowMore(event);
+  }
+
   onShowFirst = (event) => {
     event.preventDefault();
     event.stopPropagation();

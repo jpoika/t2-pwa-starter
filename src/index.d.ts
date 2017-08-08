@@ -11,3 +11,4 @@ declare const __DEVTOOLS__: boolean;
 declare const __REDUX_PERSIST_PREFIX__: string;
 
 declare const __APP_VERSION__: string;
+

@@ -2,9 +2,7 @@ import * as React from 'react';
 import AppBar from '../containers/AppBar';
 import {withRouter} from 'react-router-dom';
 import {AppPageInterface} from './Main';
-import Bundle from './Bundle';
-const  loadAppRoutes = require('bundle-loader?lazy!./AppRoutes');
-const  loadGlobalComponents = require('bundle-loader?lazy!./GlobalComponents');
+import MainContent from './MainContent';
 
 
 export interface Props {
@@ -37,19 +35,10 @@ class MainAppBar extends React.Component<Props, State>{
                 <AppBar rightIcon={this.props.rightIcon} defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.handleTitleClick} />
 
                 <div style={{padding: 10}}>
-                    <Bundle load={loadAppRoutes}>
-                      {(AppRoutes) => (AppRoutes
-                        ? <AppRoutes {...defaultProps} />
-                        : null
-                      )}
-                    </Bundle>
-                    <Bundle load={loadGlobalComponents}>
-                      {(GlobalComponents) => (GlobalComponents
-                        ? <GlobalComponents />
-                        : null
-                      )}
-                    </Bundle>
-                 </div>
+
+                    <MainContent {...defaultProps} />
+                    
+                </div>
             </div>;
  
   }
