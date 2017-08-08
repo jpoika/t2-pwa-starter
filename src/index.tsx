@@ -80,7 +80,7 @@ const render = (RootComponent: any) => {
          <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
             <Provider store={store}>
               <HashRouter>
-                <RootComponent version={__APP_VERSION__} defaultTitle={"Starter App"} appType={'default'} />
+                <RootComponent version={__APP_VERSION__} defaultTitle={"Starter App"} appType={'tabs'} />
               </HashRouter>
             </Provider>
           </MuiThemeProvider>

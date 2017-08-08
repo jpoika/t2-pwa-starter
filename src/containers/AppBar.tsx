@@ -36,3 +36,4 @@ const dispatchToProps = (dispatch,ownProps) => {
  */
 
 export default connect<StatePropsInterface,DispPropsInterface,OwnPropsInterface>(stateToProps,dispatchToProps)(AppBarComponent);
+

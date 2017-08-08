@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import MainContent from './MainContent';
+import {AppPageInterface} from './Main';
 // const styles = {
 //   headline: {
 //     fontSize: 24,
@@ -9,32 +10,47 @@ import MainContent from './MainContent';
 //     fontWeight: 400,
 //   },
 // };
+export interface Props {
+  setPageTitle(title:string): void;
+  screen:{width: number, height: number,orientation: string}
+  title: string;
+  defaultTitle: string;
+  leftIcon: JSX.Element;
+  rightIcon: JSX.Element;
+  titlePath: string;
+  appPage: AppPageInterface;
+  tabId: string | number;
+  tabsId: string | number;
+}
 
-export default class TabsExampleControlled extends React.Component<any,any> {
+export interface State {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 'a',
-    };
-  }
+}
+export default class MainTabs extends React.Component<any,any> {
 
   handleChange = (value) => {
-    this.setState({
-      value: value,
-    });
-  };
+    console.log('change to ' + value);
+    const {appPage} = this.props;
+    appPage.history.push(value);
+    appPage.setTab(null,value);
+  }
 
   render() {
+
     const defaultProps = {...this.props,basePath: '/'};
     return (
       <div>
         <Tabs
-          value={this.state.value}
+          value={this.props.tabId}
           onChange={this.handleChange}
         >
-          <Tab label="Tab A" value="a" />
-          <Tab label="Tab B" value="b" />
+
+          <Tab label="Home" value="/">
+          </Tab>
+          <Tab label="Demo" value="/store">
+          </Tab>
+          <Tab label="Products" value="/store/products">
+          </Tab>
         </Tabs>
 
         <MainContent {...defaultProps} />
