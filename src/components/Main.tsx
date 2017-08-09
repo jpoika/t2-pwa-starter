@@ -16,10 +16,12 @@ export interface AppPageInterface {
   version: string;
   appType: string;
   setTabs: (tabs: JSX.Element[]) => void;
+  sendMessage(title:string): void;
 }
 
 export interface Props {
   setPageTitle(title:string): void;
+  sendMessage(title:string): void;
   history: any;
   version: string;
   leftIcon: JSX.Element;
@@ -36,7 +38,7 @@ export interface State {
   rightIcon: JSX.Element;
   tabId: string | number;
   tabsId: string | number;
-  tabs?: JSX.Element[];
+  mainTabs: JSX.Element[];
 }
 
 export default class Main extends React.Component<Props, State>{
@@ -54,18 +56,17 @@ export default class Main extends React.Component<Props, State>{
       rightIcon: this.props.rightIcon,
       tabsId: null,
       tabId: '/',
-      tabs: []
+      mainTabs: []
     }
   }
 
-  handleSetTabs = (tabs: JSX.Element[]) => {
+  handleSetTabs = (mainTabs: JSX.Element[]) => {
     this.setState({
-      tabs
+      mainTabs
     });
   }
 
   handleSelectTab = (tabsId: string | number,tabId: string | number) => {
-    console.log(tabId);
     this.setState({
       tabsId,
       tabId
@@ -153,7 +154,8 @@ export default class Main extends React.Component<Props, State>{
       setRightIcon: this.handleSetRightIcon,
       selectTab: this.handleSelectTab,
       appType: this.props.appType,
-      setTabs: this.handleSetTabs
+      setTabs: this.handleSetTabs,
+      sendMessage: this.props.sendMessage
     }
   }
   render(){

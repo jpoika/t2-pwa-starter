@@ -3,7 +3,6 @@ import CommandDetailsComponent from '../../components/StoreDemo/ProductDetails';
 import {withRouter} from 'react-router-dom';
 import {CommandInterface} from '../../res/data/commands';
 import {isProductFavorite} from '../_helper';
-import {sendMessage} from '../../actions';
 import {addProductToFavorites,removeProductFromFavorites} from '../../actions/storeDemo'
 
 interface OwnPropsInterface{
@@ -26,10 +25,6 @@ const dispatchToProps = (dispatch,ownProps) => {
       } else {
         dispatch(addProductToFavorites(product.id));
       }
-    },
-    sendMessage: (message: string) => {
-
-      dispatch(sendMessage(message));
     }
   }
 }

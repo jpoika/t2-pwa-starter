@@ -2,6 +2,7 @@ import * as React from 'react';
 import {ProductInterface} from '../../res/data/products';
 import {AppPageInterface} from '../Main';
 import FavoriteCheckbox from '../FavoriteCheckBox';
+import ProductContextMenu from './ProductContextMenu';
 import {Card, /*CardActions, CardHeader,*/ CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 
@@ -10,7 +11,6 @@ export interface Props {
   appPage: AppPageInterface;
   isFavorite: boolean;
   toggleFavorite: (product: ProductInterface, isFavorite:boolean) => void;
-  sendMessage(message:string): void;
 }
 
 export interface State {
@@ -22,13 +22,15 @@ export default class ProductDetails extends React.Component<Props, State>{
   componentWillMount(){
       const {product,appPage} = this.props;
       appPage.setPageTitle(product.title);
+      this.props.appPage.setRightIcon(<ProductContextMenu />);
+      this.props.appPage.setTabs([]);
   }
 
   handleSetToggle = () => {
-    const {toggleFavorite,isFavorite,product,sendMessage} = this.props;
+    const {toggleFavorite,isFavorite,product,appPage} = this.props;
     return () => {
       const favMessage = isFavorite ? "Removed Favorite" : "Added Favorite";
-      sendMessage(favMessage);
+      appPage.sendMessage(favMessage);
       toggleFavorite(product,isFavorite);
     }
   }

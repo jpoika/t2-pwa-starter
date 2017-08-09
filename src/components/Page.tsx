@@ -7,10 +7,13 @@ export interface Props {
   titlePath?: string; //the path navigated to when appbar title is clicked
   title?: string;
   tab?: string;
+  tabs?: JSX.Element[];
+  defaultTabs?: JSX.Element[];
 }
 
+
 export interface State {
-  
+ // lastTabs: JSX.Element[];
 }
 
 export default class Page extends React.Component<Props, State>{
@@ -18,18 +21,27 @@ export default class Page extends React.Component<Props, State>{
     title: '',
     titlePath: '',
     leftIcon: null,
-    rightIcon: null
+    rightIcon: null,
+    tabs: undefined,
+    defaultTabs: []
   }
 
 
   componentWillMount(){
-    const {appPage,leftIcon,titlePath,title,rightIcon,tab} = this.props;
+    const {appPage,leftIcon,titlePath,title,rightIcon,tab,tabs,defaultTabs} = this.props;
+
     appPage.setRightIcon(rightIcon);
 
     appPage.setMainIcon(leftIcon);
-
-    if(appPage.appType === 'tabs' && tab){
+    
+    if(tab){
       appPage.selectTab('home',tab);
+    }
+
+    if(typeof tabs !== 'undefined'){
+      appPage.setTabs(tabs);
+    } else {
+      appPage.setTabs(defaultTabs);
     }
 
     if(titlePath){
@@ -39,6 +51,7 @@ export default class Page extends React.Component<Props, State>{
     if(title){
         appPage.setPageTitle(title);
     }
+
   }
 
   render(){

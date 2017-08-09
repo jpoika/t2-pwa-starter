@@ -4,7 +4,6 @@ import {ProductInterface} from '../../res/data/products';
 import FavoriteCheckbox from '../FavoriteCheckBox';
 //import Pagination from './ProductPagination';
 import {GridList, GridTile} from 'material-ui/GridList';
-import RightIcon from '../RightIcon';
 
 import {AppPageInterface} from '../Main'
 export interface FavoriteProductInterface extends ProductInterface{
@@ -48,9 +47,6 @@ export default class ProductsList extends React.Component<Props, State>{
     }
   }
 
-  componentWillMount(){
-    this.props.appPage.setRightIcon(<RightIcon />);
-  }
 
   handleToggleFavorite = (product:FavoriteProductInterface) => {
     const {toggleFavorite} = this.props;

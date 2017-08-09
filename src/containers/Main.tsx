@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import MainComponent from '../components/Main';
 import {withRouter} from 'react-router-dom';
-import {setPageTitle} from '../actions';
+import {setPageTitle,sendMessage} from '../actions';
 
 const stateToProps = (state,ownProps: OwnProps):StateToProps => {
   return {
@@ -13,6 +13,9 @@ const dispatchToProps = (dispatch,ownProps) => {
   return {
     setPageTitle: (title:string) => {
       dispatch(setPageTitle(title));
+    },
+    sendMessage: (message: string) => {
+      dispatch(sendMessage(message));
     }
   }
 }
