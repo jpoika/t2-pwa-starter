@@ -11,10 +11,11 @@ export interface AppPageInterface {
   setRightIcon(icon: JSX.Element): void;
   setPageTitle(title:string): void;
   setTitlePath(titlePath:string):void;
-  setTab(tabsId: string | number, tabId: string | number): void;
+  selectTab(tabsId: string | number, tabId: string | number): void;
   history: any;
   version: string;
   appType: string;
+  setTabs: (tabs: JSX.Element[]) => void;
 }
 
 export interface Props {
@@ -35,6 +36,7 @@ export interface State {
   rightIcon: JSX.Element;
   tabId: string | number;
   tabsId: string | number;
+  tabs?: JSX.Element[];
 }
 
 export default class Main extends React.Component<Props, State>{
@@ -51,18 +53,25 @@ export default class Main extends React.Component<Props, State>{
       titlePath: '/',
       rightIcon: this.props.rightIcon,
       tabsId: null,
-      tabId: '/'
+      tabId: '/',
+      tabs: []
     }
   }
 
-  handleSetTab = (tabsId: string | number,tabId: string | number) => {
+  handleSetTabs = (tabs: JSX.Element[]) => {
+    this.setState({
+      tabs
+    });
+  }
+
+  handleSelectTab = (tabsId: string | number,tabId: string | number) => {
     console.log(tabId);
     this.setState({
       tabsId,
       tabId
     });
   }
-
+  
   handleSetMainIcon = (leftIcon: JSX.Element) => {
     this.setState({leftIcon})
   }
@@ -142,8 +151,9 @@ export default class Main extends React.Component<Props, State>{
       setTitlePath: this.handleSetTitlePath,
       version: this.props.version,
       setRightIcon: this.handleSetRightIcon,
-      setTab: this.handleSetTab,
-      appType: this.props.appType
+      selectTab: this.handleSelectTab,
+      appType: this.props.appType,
+      setTabs: this.handleSetTabs
     }
   }
   render(){

@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import StoreRoutes from './StoreDemo/StoreRoutes';
 import {AppPageInterface} from './Main';
+import {Tab} from 'material-ui/Tabs';
 
 export interface Props {
   appPage: AppPageInterface
@@ -17,6 +18,14 @@ export interface State {
 }
 class AppRoutes extends React.Component<Props, State>{
 
+  componentWillMount(){
+    const {appPage} = this.props;
+    appPage.setTabs([
+      <Tab label="Home" value="/" />,
+      <Tab label="Demo" value="/store" />,
+      <Tab label="Products" value="/store/products" />,
+    ]);
+  }
 
   renderRouteComponent = (Component) => {
       return routeComponentWithProps(Component,{...this.props, leftIcon: <DefaultLeftIcon />, rightIcon: null});

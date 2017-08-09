@@ -29,7 +29,7 @@ export default class Page extends React.Component<Props, State>{
     appPage.setMainIcon(leftIcon);
 
     if(appPage.appType === 'tabs' && tab){
-      appPage.setTab('home',tab);
+      appPage.selectTab('home',tab);
     }
 
     if(titlePath){

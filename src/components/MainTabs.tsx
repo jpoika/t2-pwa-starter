@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import {Tabs} from 'material-ui/Tabs';
 import MainContent from './MainContent';
 import {AppPageInterface} from './Main';
 import AppBar from '../containers/AppBar';
@@ -23,18 +23,20 @@ export interface Props {
   tabId: string | number;
   tabsId: string | number;
   onTitleClick: (event: any) => void;
+  tabs: JSX.Element[]
 }
 
 export interface State {
 
 }
+
+
 export default class MainTabs extends React.Component<any,any> {
 
   handleChange = (value) => {
-    console.log('change to ' + value);
     const {appPage} = this.props;
     appPage.history.push(value);
-    appPage.setTab(null,value);
+    appPage.selectTab(null,value);
   }
 
   render() {
@@ -43,18 +45,12 @@ export default class MainTabs extends React.Component<any,any> {
     return (
       <div>
         <AppBar rightIcon={this.props.rightIcon} defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.props.onTitleClick} />
-        <Tabs
+        
+        {this.props.tabs.length > 0 && <Tabs
           value={this.props.tabId}
           onChange={this.handleChange}
-        >
-
-          <Tab label="Home" value="/">
-          </Tab>
-          <Tab label="Demo" value="/store">
-          </Tab>
-          <Tab label="Products" value="/store/products">
-          </Tab>
-        </Tabs>
+          children={this.props.tabs}
+        />}
 
         <MainContent {...defaultProps} />
         

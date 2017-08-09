@@ -36,7 +36,8 @@ module.exports = {
           '__DEVTOOLS__': false,
           '__IS_CORDOVA_BUILD__': false,
           '__REDUX_PERSIST_PREFIX__': JSON.stringify(appConfig.dbPrefix),
-          '__APP_VERSION__': JSON.stringify(appConfig.version)
+          '__APP_VERSION__': JSON.stringify(appConfig.version),
+          '__APP_TYPE__': JSON.stringify(appConfig.appType)
         }),
 
         new CleanWebpackPlugin(['dist'], {
