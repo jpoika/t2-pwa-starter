@@ -11,12 +11,16 @@ export interface AppPageInterface {
   setRightIcon(icon: JSX.Element): void;
   setPageTitle(title:string): void;
   setTitlePath(titlePath:string):void;
-  selectTab(tabsId: string | number, tabId: string | number): void;
+  selectTab(tabsId: string | number, tabId:number): void;
   history: any;
   version: string;
   appType: string;
   setTabs: (tabs: JSX.Element[]) => void;
+  setDefaultTabs: (tabs: JSX.Element[]) => void;
   sendMessage(title:string): void;
+  tabCount: number;
+  tabRemoved: () => void;
+  tabAdded: () => void;
 }
 
 export interface Props {
@@ -36,9 +40,11 @@ export interface State {
   leftIcon: JSX.Element;
   titlePath: string;
   rightIcon: JSX.Element;
-  tabId: string | number;
+  tabId: number;
   tabsId: string | number;
   mainTabs: JSX.Element[];
+  tempTabs: JSX.Element[] | undefined;
+  tabCount: number;
 }
 
 export default class Main extends React.Component<Props, State>{
@@ -55,18 +61,41 @@ export default class Main extends React.Component<Props, State>{
       titlePath: '/',
       rightIcon: this.props.rightIcon,
       tabsId: null,
-      tabId: '/',
-      mainTabs: []
+      tabId: 0,
+      mainTabs: [],
+      tempTabs: undefined,
+      tabCount: 0
     }
   }
 
-  handleSetTabs = (mainTabs: JSX.Element[]) => {
+  handleSetTabs = (tempTabs: JSX.Element[]) => {
+    console.log(tempTabs);
+    this.setState({
+      tempTabs
+    });
+  }
+
+  handleTabAdded = () => {
+    this.setState({
+      tabCount: this.state.tabCount + 1
+    });
+  }
+
+  handleTabRemoved = () => {
+    if(this.state.tabCount){
+      this.setState({
+        tabCount: this.state.tabCount - 1
+      });
+    }
+  }
+  handleDefaultTabs = (mainTabs: JSX.Element[]) => {
+    console.log(mainTabs);
     this.setState({
       mainTabs
     });
   }
 
-  handleSelectTab = (tabsId: string | number,tabId: string | number) => {
+  handleSelectTab = (tabsId: string | number,tabId:number) => {
     this.setState({
       tabsId,
       tabId
@@ -155,7 +184,11 @@ export default class Main extends React.Component<Props, State>{
       selectTab: this.handleSelectTab,
       appType: this.props.appType,
       setTabs: this.handleSetTabs,
-      sendMessage: this.props.sendMessage
+      setDefaultTabs: this.handleDefaultTabs,
+      sendMessage: this.props.sendMessage,
+      tabAdded: this.handleTabAdded,
+      tabRemoved: this.handleTabRemoved,
+      tabCount: this.state.tabCount
     }
   }
   render(){

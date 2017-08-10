@@ -3,7 +3,7 @@ import {Tabs} from 'material-ui/Tabs';
 import MainContent from './MainContent';
 import {AppPageInterface} from './Main';
 import AppBar from '../containers/AppBar';
-
+//import ReactSwipeableViews from 'react-swipeable-views';
 
 export interface Props {
   setPageTitle(title:string): void;
@@ -14,7 +14,7 @@ export interface Props {
   rightIcon: JSX.Element;
   titlePath: string;
   appPage: AppPageInterface;
-  tabId: string | number;
+  tabId: number;
   tabsId: string | number;
   onTitleClick: (event: any) => void;
   mainTabs: JSX.Element[]
@@ -29,13 +29,18 @@ export default class MainTabs extends React.Component<any,any> {
 
   handleChange = (value) => {
     const {appPage} = this.props;
-    appPage.history.push(value);
+    console.log(value);
     appPage.selectTab(null,value);
   }
 
-  render() {
+  handleSwipeChange = (v,v2) => {
+    console.log(v,v2);
+  }
 
+  render() {
+    console.log(this.props);
     const defaultProps = {...this.props,basePath: '/',mainTabs: undefined};
+    const tabs = typeof this.props.tempTabs !== 'undefined' ? this.props.tempTabs : this.props.mainTabs;
     return (
       <div>
         <AppBar rightIcon={this.props.rightIcon} defaultTitle={this.props.title}  leftIcon={this.props.leftIcon} onTitleClick={this.props.onTitleClick} />
@@ -43,10 +48,12 @@ export default class MainTabs extends React.Component<any,any> {
         <Tabs
           value={this.props.tabId}
           onChange={this.handleChange}
-          children={this.props.mainTabs}
+          children={tabs}
         />
 
+
         <MainContent {...defaultProps} />
+
         
       </div>
     );

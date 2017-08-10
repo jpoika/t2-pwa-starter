@@ -7,8 +7,9 @@ import { Route } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import StoreRoutes from './StoreDemo/StoreRoutes';
 import {AppPageInterface} from './Main';
-import DefaultTabs from './DefaultTabs';
-
+//import DefaultTabs from './DefaultTabs';
+//import ReactSwipeableViews from 'react-swipeable-views';
+import RouteTabs from './RouteTabs';
 export interface Props {
   appPage: AppPageInterface
 }
@@ -26,12 +27,12 @@ class AppRoutes extends React.Component<Props, State>{
   }
 
   render(){
-    console.log(this.props);
-    const defaultProps = {...this.props, basePath: '/', tab: '/', defaultTabs: DefaultTabs};
-    return <div>
-                <Route path="/store" render={this.renderRouteComponent(StoreRoutes)} />
-                <Route exact path="/" render={routePageWithProps(MainHomePage,defaultProps,"Home")} />
-    </div>;
+  
+    const defaultProps = {...this.props, basePath: '/', tab: 0};
+    return <RouteTabs id='appTabs' appPage={this.props.appPage}>
+                <Route tab title={'Home'} exact path="/" render={routePageWithProps(MainHomePage,defaultProps,"Home")} />
+                <Route tab title={'Demo'} path="/store" render={this.renderRouteComponent(StoreRoutes)} />
+    </RouteTabs>;
  
   }
 }
