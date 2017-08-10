@@ -1,5 +1,6 @@
 import * as React from 'react';
 //import ReactSwipeableViews from 'react-swipeable-views';
+
 import {Tab} from 'material-ui/Tabs';
 import {AppPageInterface} from './Main';
 export interface Props {
@@ -14,7 +15,7 @@ export interface State {
 }
 
 
-export default class RouteTabs extends React.Component<Props,any> {
+export default class RouteGroup extends React.Component<Props,any> {
 
   handleTabActive = (path) => {
     const {appPage,onActive} = this.props;
@@ -27,7 +28,7 @@ export default class RouteTabs extends React.Component<Props,any> {
 
   handleCreateTabs = () => {
     const {appPage} = this.props;
-    let tabs = []
+    let tabs = [];
 
     this.props.children
       .filter((child) => typeof child.props['tab'] !== 'undefined')

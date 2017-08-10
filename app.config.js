@@ -1,5 +1,5 @@
 
-appVersion = '1.1.1'
+appVersion = '0.0.0'
 module.exports = {
     name: 'Demo App',
     name_long: 'Demo App V' + appVersion,
