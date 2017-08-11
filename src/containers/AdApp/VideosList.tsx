@@ -16,7 +16,7 @@ import {connect} from 'react-redux';
 // }
 
 const stateToProps = (state,ownProps) => {
-  console.log(ownProps.basePath);
+
   return {
     videos: state.videoIds.map(id => state.videos[id]),
     cols: 2//getCols(state.device),
