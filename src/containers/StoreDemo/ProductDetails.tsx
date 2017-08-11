@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import CommandDetailsComponent from '../../components/StoreDemo/ProductDetails';
 import {withRouter} from 'react-router-dom';
-import {CommandInterface} from '../../res/data/commands';
+import {ProductInterface} from '../../res/data/products';
 import {isProductFavorite} from '../_helper';
 import {addProductToFavorites,removeProductFromFavorites} from '../../actions/storeDemo'
 
@@ -19,7 +19,7 @@ const stateToProps = (state,ownProps: OwnPropsInterface) => {
 
 const dispatchToProps = (dispatch,ownProps) => {
   return {
-    toggleFavorite: (product: CommandInterface, isFavorite: boolean) => {
+    toggleFavorite: (product: ProductInterface, isFavorite: boolean) => {
       if(isFavorite){
         dispatch(removeProductFromFavorites(product.id));
       } else {

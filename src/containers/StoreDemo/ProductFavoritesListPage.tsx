@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import FavoritesListComponent from '../../components/StoreDemo/ProductFavoritesListPage';
-import {CommandInterface} from '../../res/data/commands';
+import {ProductInterface} from '../../res/data/products';
 import {removeProductFromFavorites} from '../../actions/storeDemo';
 import {withRouter} from 'react-router-dom';
 
@@ -12,10 +12,10 @@ const stateToProps = (state,ownProps) => {
 
 const dispatchToProps = (dispatch,ownProps) => {
   return {
-    removeFavorite: (product: CommandInterface) => {
+    removeFavorite: (product: ProductInterface) => {
       dispatch(removeProductFromFavorites(product.id));
     },
-    itemClick: (product: CommandInterface) => {
+    itemClick: (product: ProductInterface) => {
        ownProps.history.push('/favorites/' + product.id);
     }
   }
