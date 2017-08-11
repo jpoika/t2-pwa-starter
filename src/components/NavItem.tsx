@@ -6,17 +6,16 @@ import {/*routePageWithProps,menuItem,leftIconProps,*/routePageWithProps,routeCo
 //import DefaultTabs from './DefaultTabs';
 //import ReactSwipeableViews from 'react-swipeable-views';
 export interface Props {
-  //[propName: string]: any;
   path: string;
-  exact?: boolean;
-  tab?: number;
-  componentPage?: React.ReactNode;
-  component?: React.ReactNode
   title: string;
   basePath: string;
   appPage: AppPageInterface;
   leftIcon?: any;
   tabIndex?: number;
+  exact?: boolean;
+  tab?: number;
+  componentPage?: React.ReactNode;
+  component?: React.ReactNode
 }
 
 export interface State {
@@ -27,7 +26,8 @@ export default class NavItem extends React.Component<Props, State>{
   static defaultProps: Partial<Props> = {
     exact: false,
     tab: undefined,
-    tabIndex: undefined
+    tabIndex: undefined,
+    basePath: '/'
   }
   renderRouteComponent = () => {
     return routeComponentWithProps(this.props.component,{...this.getCleanProps(), leftIcon: <DefaultLeftIcon />, rightIcon: null});

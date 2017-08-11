@@ -21,11 +21,11 @@ class AppRoutes extends React.Component<Props, State>{
 
   render(){
   
-    const defaultProps = {...this.props, basePath: '/'};
-    return <RouteGroup id='appTabs' appPage={this.props.appPage}>
-                <RouteItem {...defaultProps} tab={0} title={'Home'} exact path="/" componentPage={MainHomePage} />
-                <RouteItem {...defaultProps} tab={0} title={'Demo'} path="/store" component={StoreRoutes} />
-       
+    const props = {...this.props, basePath: '/'};
+
+    return <RouteGroup appPage={this.props.appPage} id='appTabs' >
+                <RouteItem {...props} tab={0} title={'Home'} exact path="/" componentPage={MainHomePage} />
+                <RouteItem {...props} tab={0} title={'Demo'} path="/store" component={StoreRoutes} />
     </RouteGroup>;
  
   }
