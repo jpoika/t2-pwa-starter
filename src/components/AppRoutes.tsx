@@ -24,12 +24,14 @@ class AppRoutes extends React.Component<Props, State>{
   render(){
   
     const props = {...this.props, basePath: '/'};
-    return <RouteGroup toChildProps={...props} id='appTabs' appPage={this.props.appPage}>
 
-        <RouteItem tab={0} title={'Overview'} exact path="/" componentPage={Home} />
-        <RouteItem tab={1} title={'Assessment'} path="/assessments" componentPage={Assessments} />
-        <RouteItem tab={2} title={'Videos'} path="/vidoes" componentPage={Videos} />
-        <RouteItem tab={3} title={'Resources'} path="/resources" componentPage={Video} />
+    return <RouteGroup id='appTabs' appPage={this.props.appPage}>
+
+        <RouteItem {...props} tab={0} title={'Overview'} exact path="/" componentPage={Home} />
+        <RouteItem {...props} tab={1} title={'Assessment'} path="/assessments" componentPage={Assessments} />
+        <RouteItem {...props} tab={2} title={'Videos'} path="/vidoes" componentPage={Videos} />
+        <RouteItem {...props} tab={3} title={'Resources'} path="/resources" componentPage={Video} />
+
     </RouteGroup>;
  
   }
