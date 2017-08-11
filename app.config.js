@@ -1,5 +1,6 @@
 
-appVersion = '1.0.0'
+const appVersion = '1.0.0';
+
 module.exports = {
     name: 'Resilience',
     name_long: 'AD Resilience V' + appVersion,

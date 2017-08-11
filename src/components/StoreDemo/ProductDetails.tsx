@@ -23,7 +23,7 @@ export default class ProductDetails extends React.Component<Props, State>{
       const {product,appPage} = this.props;
       appPage.setPageTitle(product.title);
       this.props.appPage.setRightIcon(<ProductContextMenu />);
-      this.props.appPage.setTabs([]);
+      //this.props.appPage.setTabs([]);
   }
 
   handleSetToggle = () => {
