@@ -10,6 +10,8 @@ import {combineReducers} from 'redux';
 //import {arrayPushUnique,arrayRemove} from './_helper';
 import * as demoReducers from './storeDemo';
 
+import * as adAppReducers from './adApp';
+
 
 
 const defaultUser = {
@@ -94,7 +96,8 @@ const defaultReducers = {
 
 const reducer = combineReducers({
   ...demoReducers,
-  ...defaultReducers
+  ...defaultReducers,
+  ...adAppReducers
 });
 
 export default reducer;

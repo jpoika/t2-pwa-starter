@@ -29,7 +29,7 @@ export default class Page extends React.Component<Props, State>{
 
   componentWillMount(){
     const {appPage,leftIcon,titlePath,title,rightIcon,tab /* ,tabs,defaultTabs */} = this.props;
-
+    console.log((this.props as any).basePath);
     appPage.setRightIcon(rightIcon);
 
     appPage.setMainIcon(leftIcon);
