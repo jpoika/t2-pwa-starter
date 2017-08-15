@@ -6,7 +6,7 @@ import Home from './AdApp/Home';
 import Assessments from './AdApp/Assessments';
 
 import VideosList from '../containers/AdApp/VideosList';
-import Video from './AdApp/Video';
+import Video from '../containers/AdApp/Video';
 import Resources from './AdApp/Resources';
 //import DefaultTabs from './DefaultTabs';
 //import ReactSwipeableViews from 'react-swipeable-views';
@@ -32,7 +32,7 @@ class AppRoutes extends React.Component<Props, State>{
         <RouteItem {...props} tab={0} title={'Overview'} exact path="/" componentPage={Home} />
         <RouteItem {...props} tab={1} title={'Assessment'} path="/assessments" componentPage={Assessments} />
         <RouteItem {...props} basePath="/videos" tab={2} title={'Videos'} exact path="/videos" componentPage={VideosList} />
-        <RouteItem {...props} basePath="/videos" tabIndex={2} title={'Video'} path="/videos/:id" componentPage={Video} />
+        <RouteItem {...props} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
         <RouteItem {...props} tab={3}  title={'Resources'} path="/resources" componentPage={Resources} />
 
     </RouteGroup>;

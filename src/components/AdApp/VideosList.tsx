@@ -9,8 +9,7 @@ export interface Props{
 
 const VideosList: React.SFC<Props> = (props) => {
   const {videos, cols,onClick} = props;
-   console.log((props as any).basePath);
-  //<Link key={tile.id} to={'/main/videos/'+tile.id}  cols={tile.featured ? 1 : 1} >
+
   return <GridList
         cols={cols}
       >

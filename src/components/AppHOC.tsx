@@ -11,6 +11,7 @@ interface HOCPageProps extends PageProps{
 
 const withPropsComponent = (WrappedComponent,props) => {
   const componentProps = {...props, tab: undefined, tabIndex: undefined};
+  console.log(componentProps);
   return <WrappedComponent {...componentProps} />;
 }
 
@@ -19,7 +20,8 @@ export const routePageWithProps = (WrappedComponent,props:HOCPageProps,title) =>
     return (routeProps) => {
       const tab = typeof props.tab !== 'undefined' ? props.tab : props.tabIndex;
       const combinedProps = {...props,title: title,tab: tab};
-
+      // console.log(routeProps);
+      // console.log({...props,...routeProps});
       return <Page {...combinedProps}>{withPropsComponent(WrappedComponent,{...props,...routeProps})}</Page>;
     }
 }
