@@ -54,7 +54,7 @@ export default class Page extends React.Component<Props, State>{
   }
 
   render(){
-    //{React.cloneElement((this.props as any).children, this.props)}
+
     return <div>
              {this.props.children}
            </div>;

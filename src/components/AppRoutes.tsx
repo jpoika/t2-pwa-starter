@@ -29,7 +29,7 @@ class AppRoutes extends React.Component<Props, State>{
     //const vprops = {...this.props, basePath: undefined};
     return <RouteGroup id='appTabs' appPage={this.props.appPage}>
 
-        <RouteItem {...props} tab={0} title={'Overview'} exact path="/" componentPage={Home} />
+        <RouteItem {...props} tab={0} title={'Home Overview'} exact path="/" componentPage={Home} />
         <RouteItem {...props} tab={1} title={'Assessment'} path="/assessments" componentPage={Assessments} />
         <RouteItem {...props} basePath="/videos" tab={2} title={'Videos'} exact path="/videos" componentPage={VideosList} />
         <RouteItem {...props} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
