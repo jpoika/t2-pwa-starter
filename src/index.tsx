@@ -53,7 +53,7 @@ const render = (RootComponent: any) => {
 
   if(__DEVTOOLS__){
     store.subscribe(() => {
-        //console.log(store.getState()); // list entire state of app
+        console.log(store.getState()); // list entire state of app
     });
   }
 
