@@ -56,7 +56,7 @@ const parserSubdir = (outSubdir,writeStream) => {
                       url: '',
                       featured: false
                     };
-      const lineEnd = i < data.length ? ",\n" : "\n";
+      const lineEnd = i < data.length - 1 ? ",\n" : "\n";
       writeStream.write(JSON.stringify(jsItem)+lineEnd)
 
     }

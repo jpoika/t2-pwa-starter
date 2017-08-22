@@ -2,12 +2,10 @@ import Video from '../../components/AdApp/Video';
 import {VideoInterface} from '../../res/data/videos';
 import {connect} from 'react-redux';
 
-const stateToProps = (state, ownProps): {video: VideoInterface, screenWidth?: number} => {
-    //console.log(state);
-    // console.log(ownProps);
+const stateToProps = (state, ownProps): {video: VideoInterface} => {
+
   return {
-    video: state.videos[ownProps.match.params.id],
-    screenWidth: 500
+    video: state.videos[ownProps.match.params.id]
   }
 }
 const dispatchToProps = (dispatch, ownProps) => {

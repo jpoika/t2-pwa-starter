@@ -22,11 +22,11 @@ class Video extends React.Component<MyProps, MyState> {
     this.props.appPage.setPageTitle(video.title);
   }
   render () {
-    var {video} = this.props;
+    var {video,appPage} = this.props;
 
     return (
       <div>
-        <video src={video.src} poster={video.img} controls>
+        <video style={{maxWidth: appPage.screen.width, margin: '0px auto 0px auto', display: 'block'}} src={video.src} poster={video.img} controls>
           Sorry, your browser doesn't support embedded videos.
         </video>
       </div>
