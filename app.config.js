@@ -3,9 +3,9 @@
 * This page defines a list of global variables to be set throughout your app such
 * as your index.html and manifest.json.
 *
-* Created by Bethany Eastman on 08/22/2017.
+* Created by Jack Lightfoot on 08/22/2017.
 *
-* ADStigma
+* T2 PWA Starter
 *
 * Copyright © 2009-2017 United States Government as represented by
 * the Chief Information Officer of the National Center for Telehealth
