@@ -1,24 +1,35 @@
 import * as React from 'react';
-import {List, ListItem} from 'material-ui/List';
+
 //import {assessments} from 'local-t2-assessment-suite';
-import {assesslist} from './Assessment';
+import {assessments,AssessmentsList} from 'local-t2-assessment-suite';
 import {AppPageInterface} from '../Main';
 interface Props{
   appPage: AppPageInterface;
   basePath: string;
 }
 const Assessments: React.SFC<Props> = (props) => {
-  const assessments = Object.keys(assesslist).map((key) => {
-    return {...assesslist[key],slug: key};
-  });
-  const onClick = (path) => {
-    return (event) => {
-      props.appPage.history.push(props.basePath + '/' + path);
-    }
+
+  const handleTitle = (title) => {
+    props.appPage.setPageTitle(title);
   }
-  return <List>
-        {assessments.map(item => <ListItem key={item.slug} primaryText={item.name} onTouchTap={onClick(item.slug)} />)}
-  </List>
+
+  const handleCancel = (err, assessment) => {
+    props.appPage.history.push('/assessments');
+  }
+
+  return <div>
+
+            <AssessmentsList onCancel={handleCancel} setPageTitle={handleTitle} cols={2}>
+
+              <assessments.Resilience />
+              <assessments.Forgiveness />
+              <assessments.Gratitude />
+              <assessments.Generosity />
+              <assessments.Optimism />
+              
+            </AssessmentsList>
+
+          </div>;
 
 }
 
