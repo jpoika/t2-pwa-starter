@@ -1,6 +1,6 @@
 /**
  * @file AppRoutes.tsx
- * File responsible for setting routes for the application. AppRoutes renders
+ * File responsible for setting routes for the application.
  *
  * Created by Jack LightFoot on 08/22/2017
  *
