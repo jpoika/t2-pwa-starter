@@ -6,6 +6,10 @@ import Home from './AdApp/Home';
 import Assessments from './AdApp/Assessments';
 import VideosList from '../containers/AdApp/VideosList';
 import Video from '../containers/AdApp/Video';
+
+import Library from '../components/AdApp/Library';
+import Links from '../components/AdApp/Links';
+
 import Resources from './AdApp/Resources';
 import BackButton from './BackButton';
 import LeftMenuIcon from './LeftMenuIcon';
@@ -37,7 +41,10 @@ class AppRoutes extends React.Component<Props, State>{
 
         <RouteItem {...props} basePath="/videos" tab={2} title={'Videos'} exact path="/videos" componentPage={VideosList} />
         <RouteItem {...props} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
+
         <RouteItem {...props} tab={3} basePath="/resources" title={'Resources'} path="/resources" componentPage={Resources} />
+        <RouteItem {...props} tabIndex={3} basePath="/resources" title={'Library'} path="/resources/library" componentPage={Library} />
+        <RouteItem {...props} tabIndex={3} basePath="/resources" title={'Links'} path="/resources/links" componentPage={Links} />
     </RouteGroup>;
  
   }

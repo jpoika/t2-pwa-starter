@@ -3,14 +3,16 @@ import * as React from 'react';
 //import {assessments} from 'local-t2-assessment-suite';
 import {assessments,AssessmentsList} from 'local-t2-assessment-suite';
 import {AppPageInterface} from '../Main';
+import BackButton from '../BackButton';
 interface Props{
   appPage: AppPageInterface;
   basePath: string;
 }
 const Assessments: React.SFC<Props> = (props) => {
 
-  const handleTitle = (title) => {
-    props.appPage.setPageTitle(title);
+  const handleAssessmentMounted = (assessment) => {
+    props.appPage.setPageTitle(assessment.title);
+    props.appPage.setMainIcon(<BackButton path={'/assessments'} />);
   }
 
   const handleCancel = (err, assessment) => {
@@ -19,7 +21,7 @@ const Assessments: React.SFC<Props> = (props) => {
 
   return <div>
 
-            <AssessmentsList onCancel={handleCancel} setPageTitle={handleTitle} cols={2}>
+            <AssessmentsList onCancel={handleCancel} onAssessmentMounted={handleAssessmentMounted} cols={2}>
 
               <assessments.Resilience />
               <assessments.Forgiveness />

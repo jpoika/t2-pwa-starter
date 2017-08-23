@@ -3182,9 +3182,9 @@ loader-utils@^1.0.2, loader-utils@^1.1.0:
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
-local-t2-assessment-suite@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/local-t2-assessment-suite/-/local-t2-assessment-suite-0.1.6.tgz#cfa3ae6a7de1b09a72b974e8167e96a7e98890a7"
+local-t2-assessment-suite@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/local-t2-assessment-suite/-/local-t2-assessment-suite-0.1.7.tgz#d12608213e716feab9712b203e7865f5b450ffc9"
   dependencies:
     material-ui "0.18.7"
 
