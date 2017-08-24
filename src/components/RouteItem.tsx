@@ -44,6 +44,7 @@ export interface Props {
   tabIndex?: number;
   exact?: boolean;
   tab?: number;
+  titlePath?: string;
   componentPage?: React.ReactNode;
   component?: React.ReactNode
 }
@@ -58,7 +59,7 @@ export interface State {
 
 }
 
-export default class NavItem extends React.Component<Props, State>{
+export default class RouteItem extends React.Component<Props, State>{
   static defaultProps: Partial<Props> = {
     exact: false,
     tab: undefined,

@@ -38,7 +38,7 @@ import {menuItem,leftIconProps} from '../AppHOC';
 import ProductDetails from '../../containers/StoreDemo/ProductDetails';
 import ProductsList from '../../containers/StoreDemo/ProductsList';
 import RouteGroup from '../RouteGroup';
-import RouteItem from '../NavItem';
+import RouteItem from '../RouteItem';
 
 export interface Props {
   appPage: AppPageInterface;

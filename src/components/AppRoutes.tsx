@@ -35,7 +35,7 @@ import {withRouter} from 'react-router-dom';
 import StoreRoutes from './StoreDemo/StoreRoutes';
 import {AppPageInterface} from './Main';
 import RouteGroup from './RouteGroup';
-import RouteItem from './NavItem';
+import RouteItem from './RouteItem';
 
 export interface Props {
   appPage: AppPageInterface
