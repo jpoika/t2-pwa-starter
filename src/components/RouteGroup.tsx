@@ -93,8 +93,6 @@ export default class RouteGroup extends React.Component<Props,any> {
 
     const childrenWithProps = React.Children.map(this.props.children,
      (child) => {
-       console.log((child as any).props.basePath);
-       console.log(this.props.defaultProps.basePath);
        return React.cloneElement(child as any, {
          ...this.props.defaultProps,...(child as any).props
        })
