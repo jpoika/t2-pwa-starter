@@ -63,19 +63,19 @@ class AppRoutes extends React.Component<Props, State>{
 
     const props = {...this.props, basePath: '/', leftIcon: <LeftMenuIcon />};
     //const vprops = {...this.props, basePath: undefined};
-    return <RouteGroup  appPage={this.props.appPage}>
+    return <RouteGroup defaultProps={props} appPage={this.props.appPage}>
 
-        <RouteItem {...props} tab={0} title={'Home'} exact path="/" componentPage={Home} />
+        <RouteItem tab={0} title={'Home'} exact path="/" componentPage={Home} />
 
-        <RouteItem {...props} titlePath={'/assessments'} basePath="/assessments" tab={1} title={'Assessments'} exact path="/assessments" componentPage={Assessments} />
-        <RouteItem {...props} basePath="/assessments" tabIndex={1} title={'Assessment'} leftIcon={<BackButton path="/assessments" />} exact path="/assessments/:id" componentPage={Assessments} />
+        <RouteItem  titlePath={'/assessments'} basePath="/assessments" tab={1} title={'Assessments'} exact path="/assessments" componentPage={Assessments} />
+        <RouteItem  basePath="/assessments" tabIndex={1} title={'Assessment'} leftIcon={<BackButton path="/assessments" />} exact path="/assessments/:id" componentPage={Assessments} />
 
-        <RouteItem {...props} basePath="/videos" tab={2} title={'Videos'} exact path="/videos" componentPage={VideosList} />
-        <RouteItem {...props} titlePath={'/videos'} leftIcon={<BackButton path="/videos" />} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
+        <RouteItem  basePath="/videos" tab={2} title={'Videos'} exact path="/videos" componentPage={VideosList} />
+        <RouteItem  titlePath={'/videos'} leftIcon={<BackButton path="/videos" />} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
 
-        <RouteItem {...props} tab={3} basePath="/resources" title={'Resources'} exact path="/resources" componentPage={Resources} />
-        <RouteItem {...props} titlePath={'/resources'} leftIcon={<BackButton path="/resources" />} tabIndex={3} basePath="/resources" title={'Library'} exact path="/resources/library" componentPage={Library} />
-        <RouteItem {...props} titlePath={'/resources'} leftIcon={<BackButton path="/resources" />} tabIndex={3} basePath="/resources" title={'Links'} exact path="/resources/links" componentPage={Links} />
+        <RouteItem tab={3} basePath="/resources" title={'Resources'} exact path="/resources" componentPage={Resources} />
+        <RouteItem titlePath={'/resources'} leftIcon={<BackButton path="/resources" />} tabIndex={3} basePath="/resources" title={'Library'} exact path="/resources/library" componentPage={Library} />
+        <RouteItem titlePath={'/resources'} leftIcon={<BackButton path="/resources" />} tabIndex={3} basePath="/resources" title={'Links'} exact path="/resources/links" componentPage={Links} />
 
     </RouteGroup>;
 
