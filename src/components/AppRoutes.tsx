@@ -36,15 +36,15 @@ class AppRoutes extends React.Component<Props, State>{
 
         <RouteItem {...props} tab={0} title={'Home'} exact path="/" componentPage={Home} />
 
-        <RouteItem {...props} basePath="/assessments" tab={1} title={'Assessments'} exact path="/assessments" componentPage={Assessments} />
+        <RouteItem {...props} titlePath={'/assessments'} basePath="/assessments" tab={1} title={'Assessments'} exact path="/assessments" componentPage={Assessments} />
         <RouteItem {...props} basePath="/assessments" tabIndex={1} title={'Assessment'} leftIcon={<BackButton path="/assessments" />} exact path="/assessments/:id" componentPage={Assessments} />
 
         <RouteItem {...props} basePath="/videos" tab={2} title={'Videos'} exact path="/videos" componentPage={VideosList} />
-        <RouteItem {...props} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
+        <RouteItem {...props} titlePath={'/videos'} leftIcon={<BackButton path="/videos" />} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
 
-        <RouteItem {...props} tab={3} basePath="/resources" title={'Resources'} path="/resources" componentPage={Resources} />
-        <RouteItem {...props} tabIndex={3} basePath="/resources" title={'Library'} path="/resources/library" componentPage={Library} />
-        <RouteItem {...props} tabIndex={3} basePath="/resources" title={'Links'} path="/resources/links" componentPage={Links} />
+        <RouteItem {...props} tab={3} basePath="/resources" title={'Resources'} exact path="/resources" componentPage={Resources} />
+        <RouteItem {...props} titlePath={'/resources'} leftIcon={<BackButton path="/resources" />} tabIndex={3} basePath="/resources" title={'Library'} exact path="/resources/library" componentPage={Library} />
+        <RouteItem {...props} titlePath={'/resources'} leftIcon={<BackButton path="/resources" />} tabIndex={3} basePath="/resources" title={'Links'} exact path="/resources/links" componentPage={Links} />
     </RouteGroup>;
  
   }

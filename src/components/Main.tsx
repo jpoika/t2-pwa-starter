@@ -130,7 +130,9 @@ export default class Main extends React.Component<Props, State>{
     event.preventDefault();
     event.stopPropagation();
     const {history} = this.props;
-    history.push(this.state.titlePath);
+    if(this.state.titlePath){
+      history.push(this.state.titlePath);
+    }
   }
 
   hasScreenChanged = () => {

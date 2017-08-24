@@ -20,7 +20,9 @@ const Resources: React.SFC<Props> = (props) => {
   return <div>
 
     <List>
-      <ListItem onTouchTap={handlePathClick('library')} primaryText="Library" leftIcon={<BookIcon />} />
+      <ExternalLink absolutePath={require('../../res/docs/eLibrary_resilience.pdf')}>
+        <ListItem primaryText="Library" leftIcon={<BookIcon />} />
+      </ExternalLink>
       <ListItem onTouchTap={handlePathClick('links')} primaryText="Links &amp; Books" leftIcon={<LinkIcon />} />
 
       <ExternalLink absolutePath={"http://afterdeployment.dcoe.mil/forums/peer-2-peer"}>

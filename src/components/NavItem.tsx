@@ -12,6 +12,7 @@ export interface Props {
   appPage: AppPageInterface;
   leftIcon?: any;
   tabIndex?: number;
+  titlePath?: string;
   exact?: boolean;
   tab?: number;
   componentPage?: React.ReactNode;

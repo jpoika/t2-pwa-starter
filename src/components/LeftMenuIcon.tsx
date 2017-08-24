@@ -3,9 +3,20 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/menu';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const LeftMenu = () => {
+interface Props{
+  history: {push: (any) => any}
+}
+
+const LeftMenu: React.SFC<Props> = (props) => {
+  const {history} = props;
+  const itemClick = (path) => {
+    return (event) => {
+      history.push(path);
+    }
+  }
+
   return (
     <IconMenu
 
@@ -13,11 +24,13 @@ const LeftMenu = () => {
       anchorOrigin={{horizontal: 'left', vertical: 'top'}}
       targetOrigin={{horizontal: 'left', vertical: 'top'}}
     >
-      <MenuItem containerElement={<Link to="/" />} primaryText="Home" />
-      <MenuItem containerElement={<Link to="/store" />} primaryText="Store Demo" />
+      <MenuItem onTouchTap={itemClick('/')} primaryText="Home" />
+      <MenuItem onTouchTap={itemClick('/assessments')} primaryText="Assessments" />
+      <MenuItem onTouchTap={itemClick('/videos')} primaryText="Videos" />
+      <MenuItem onTouchTap={itemClick('/resources')} primaryText="Resources" />
     </IconMenu>
     );
 }
 
 
-export default LeftMenu;
+export default withRouter(LeftMenu);

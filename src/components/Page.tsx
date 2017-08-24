@@ -51,6 +51,7 @@ export default class Page extends React.Component<Props, State>{
   componentWillUnmount(){
      const {appPage} = this.props;
      appPage.setTabs(undefined);
+     appPage.setTitlePath(null);
   }
 
   render(){

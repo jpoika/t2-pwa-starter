@@ -45,7 +45,7 @@ module.exports = {
             {test: /\.tsx?$/, use: ['awesome-typescript-loader'] },
 
             {
-                test: /\.(png|gif|jpe?g|svg)$/i,
+                test: /\.(png|gif|jpe?g|svg|pdf)$/i,
                 use: ['url-loader?limit=2']
             },
             {
