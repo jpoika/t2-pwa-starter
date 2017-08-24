@@ -1,6 +1,6 @@
 /**
- * @file SnackbarGlobal.tsx
- * A snackbar popup to be used throughout the app.
+ * @file NavItem.tsx
+ * 
  *
  * Created by Jack LightFoot on 08/22/2017
  *
@@ -30,37 +30,60 @@
  * Original Software: robert.a.kayl.civ@mail.mil
  */
 import * as React from 'react';
-import Snackbar from 'material-ui/Snackbar';
+import {AppPageInterface} from './Main';
+import DefaultLeftIcon from './LeftMenuIcon';
+import { Route } from 'react-router-dom';
+import {routePageWithProps,routeComponentWithProps} from './AppHOC';
 
 export interface Props {
-  message: string;
-  open: boolean;
-  clearMessage();
+  path: string;
+  title: string;
+  basePath?: string;
+  appPage?: AppPageInterface;
+  leftIcon?: any;
+  tabIndex?: number;
+  exact?: boolean;
+  tab?: number;
+  titlePath?: string;
+  componentPage?: React.ReactNode;
+  component?: React.ReactNode
+}
+
+interface PropsForce{ //workaround
+  appPage: AppPageInterface;
+  basePath: string;
+  [propName: string]: any;
 }
 
 export interface State {
+
 }
 
-export default class SnackbarGlobal extends React.Component<Props, State>{
-  public static defaultProps: Partial<Props> = {
-     message: '',
-     open: false
-  }
-  constructor(props){
-    super(props);
+export default class RouteItem extends React.Component<Props, State>{
+  static defaultProps: Partial<Props> = {
+    exact: false,
+    tab: undefined,
+    tabIndex: undefined
   }
 
-  handleOnclick = (event) => {
-    const {clearMessage} = this.props;
-    clearMessage();
+  renderRouteComponent = () => {
+    return routeComponentWithProps(this.props.component,{...this.getCleanProps(), leftIcon: <DefaultLeftIcon />, rightIcon: null});
+  }
+
+  handleRenderPage = () => {
+    return routePageWithProps(this.props.componentPage,this.getCleanProps() as PropsForce);
+  }
+
+  getCleanProps = () => {
+    const props = {...this.props, componentPage: undefined,component: undefined};
+    return props;
+  }
+
+  handleRender(){
+    return this.props.componentPage ? this.handleRenderPage() : this.renderRouteComponent();
   }
 
   render(){
-    return  <Snackbar
-              open={this.props.open}
-              message={this.props.message}
-              onActionTouchTap={this.handleOnclick}
-              action="Close"
-              />;
+    return <Route {...this.getCleanProps()} render={this.handleRender()} />
   }
 }
