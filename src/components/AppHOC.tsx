@@ -43,11 +43,10 @@ const withPropsComponent = (WrappedComponent,props) => {
 }
 
 
-export const routePageWithProps = (WrappedComponent,props:HOCPageProps,title) => {
+export const routePageWithProps = (WrappedComponent,props:HOCPageProps) => {
     return (routeProps) => {
       const tab = typeof props.tab !== 'undefined' ? props.tab : props.tabIndex;
-      const combinedProps = {...props,title: title,tab: tab};
-
+      const combinedProps = {...props,tab: tab};
       return <Page {...combinedProps}>{withPropsComponent(WrappedComponent,{...props,...routeProps})}</Page>;
     }
 }

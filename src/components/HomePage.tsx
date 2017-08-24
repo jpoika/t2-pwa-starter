@@ -57,7 +57,7 @@ export default class Home extends React.Component<Props, State>{
   }
 
   render(){
-
+    console.log(this.props);
     return <div>
                <h1>Under Construction</h1>
                <Link to="/store">Store Demo</Link>

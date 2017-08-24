@@ -67,7 +67,7 @@ export default class Page extends React.Component<Props, State>{
     appPage.setMainIcon(leftIcon);
 
     if(typeof tab !== 'undefined'){
-      appPage.selectTab('home',tab);
+      appPage.selectTab('someId',tab);
     }
 
     if(titlePath){
