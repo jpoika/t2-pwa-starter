@@ -127,7 +127,7 @@ const render = (RootComponent: any) => {
          <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
             <Provider store={store}>
               <HashRouter>
-                <RootComponent version={__APP_VERSION__} defaultTitle={"Starter App"} appType={__APP_TYPE__} />
+                <RootComponent version={__APP_VERSION__} defaultTitle={__APP_NAME__} appType={__APP_TYPE__} />
               </HashRouter>
             </Provider>
           </MuiThemeProvider>

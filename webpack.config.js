@@ -113,7 +113,8 @@ module.exports = {
           '__IS_CORDOVA_BUILD__': false,
           '__REDUX_PERSIST_PREFIX__': JSON.stringify(appConfig.dbPrefix),
           '__APP_VERSION__': JSON.stringify(appConfig.version),
-          '__APP_TYPE__': JSON.stringify(appConfig.appType)
+          '__APP_TYPE__': JSON.stringify(appConfig.appType),
+          '__APP_NAME__': JSON.stringify(appConfig.name)
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
