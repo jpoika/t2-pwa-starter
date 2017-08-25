@@ -13,6 +13,7 @@ const Assessments: React.SFC<Props> = (props) => {
   const handleAssessmentMounted = (assessment) => {
     props.appPage.setPageTitle(assessment.title);
     props.appPage.setMainIcon(<BackButton path={'/assessments'} />);
+    props.appPage.setTitlePath('/assessments');
   }
 
   const handleCancel = (err, assessment) => {
