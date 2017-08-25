@@ -42,7 +42,7 @@ import Links from '../components/AdApp/Links';
 
 import Resources from './AdApp/Resources';
 import BackButton from './BackButton';
-//import LeftMenuIcon from './LeftMenuIcon';
+import LeftMenuIcon from './LeftMenuIcon';
 //import DefaultTabs from './DefaultTabs';
 //import ReactSwipeableViews from 'react-swipeable-views';
 import RouteGroup from './RouteGroup';
@@ -61,11 +61,13 @@ class AppRoutes extends React.Component<Props, State>{
 
   render(){
 
-    //const props = {...this.props, basePath: '/', leftIcon: <LeftMenuIcon />};
+    const props = {...this.props, basePath: '/', leftIcon: <LeftMenuIcon />};
     //const vprops = {...this.props, basePath: undefined};
-    //const resourcesProps = {titlePath: '/resources', leftIcon: <BackButton path="/resources" />, basePath: '/resources'};
 
-    return <RouteGroup defaultProps={{}} appPage={this.props.appPage}>
+    //common resource route properties
+    const rProps = {titlePath: '/resources', leftIcon: <BackButton path="/resources" />, basePath: '/resources'};
+
+    return <RouteGroup defaultProps={props} appPage={this.props.appPage}>
 
         <RouteItem tab={0} title={'Home'} exact path="/" componentPage={Home} />
 
@@ -76,8 +78,8 @@ class AppRoutes extends React.Component<Props, State>{
         <RouteItem  titlePath={'/videos'} leftIcon={<BackButton path="/videos" />} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
 
         <RouteItem tab={3} basePath="/resources" title={'Resources'} exact path="/resources" componentPage={Resources} />
-        <RouteItem titlePath={'/resources'} leftIcon={<BackButton path="/resources" />} tabIndex={3} basePath="/resources" title={'Library'} exact path="/resources/library" componentPage={Library} />
-        <RouteItem titlePath={'/resources'} leftIcon={<BackButton path="/resources" />} tabIndex={3} basePath="/resources" title={'Links'} exact path="/resources/links" componentPage={Links} />
+        <RouteItem {...rProps} tabIndex={3} title={'Library'} exact path="/resources/library" componentPage={Library} />
+        <RouteItem {...rProps} tabIndex={3} title={'Links'} exact path="/resources/links" componentPage={Links} />
 
       </RouteGroup>;
 
