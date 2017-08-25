@@ -71,11 +71,11 @@ class AppRoutes extends React.Component<Props, State>{
 
         <RouteItem tab={0} title={'Home'} exact path="/" componentPage={Home} />
 
-        <RouteItem  titlePath={'/assessments'} basePath="/assessments" tab={1} title={'Assessments'} exact path="/assessments" componentPage={Assessments} />
-        <RouteItem  basePath="/assessments" tabIndex={1} title={'Assessment'} leftIcon={<BackButton path="/assessments" />} exact path="/assessments/:id" componentPage={Assessments} />
+        <RouteItem tab={1} titlePath={'/assessments'} basePath="/assessments"  title={'Assessments'} exact path="/assessments" componentPage={Assessments} />
+        <RouteItem basePath="/assessments" tabIndex={1} title={'Assessment'} leftIcon={<BackButton path="/assessments" />} exact path="/assessments/:id" componentPage={Assessments} />
 
-        <RouteItem  basePath="/videos" tab={2} title={'Videos'} exact path="/videos" componentPage={VideosList} />
-        <RouteItem  titlePath={'/videos'} leftIcon={<BackButton path="/videos" />} basePath="/videos" tabIndex={2} title={'Video'} exact path="/videos/:id" componentPage={Video} />
+        <RouteItem tab={2} basePath="/videos"  title={'Videos'} exact path="/videos" componentPage={VideosList} />
+        <RouteItem tabIndex={2} titlePath={'/videos'} leftIcon={<BackButton path="/videos" />} basePath="/videos" title={'Video'} exact path="/videos/:id" componentPage={Video} />
 
         <RouteItem tab={3} basePath="/resources" title={'Resources'} exact path="/resources" componentPage={Resources} />
         <RouteItem {...rProps} tabIndex={3} title={'Library'} exact path="/resources/library" componentPage={Library} />

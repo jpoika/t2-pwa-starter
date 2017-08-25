@@ -87,7 +87,10 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin(),
         new PathRewriterPlugin(),
         new OfflinePlugin({
-          excludes: ['**/.*', '**/*.map','stats.json']
+          ServiceWorker: {
+            events: true
+          },
+          excludes: ['**/.*', '**/*.map','stats.json','**/*.pdf']
         })
     ]
 };
