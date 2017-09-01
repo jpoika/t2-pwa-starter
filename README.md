@@ -83,10 +83,31 @@ This app uses react router version 4.
 
 There are two components that basically utilize react-router v4 and add some features including the ability to:
 
+
+
 - Set the page title
 - Set the left and or right icons of the app bar
 - Add a [Tab](http://www.material-ui.com/#/components/tabs) that links to the route
 - Set the ink bar of a tab for a matched route
+
+
+#### src/components/RouteGroup.tsx
+
+The RouteGroup component does two primary things
+- You can use it to establish the default properites of all RouteItem components nested.
+
+```jsx
+  <RouteGroup defaultProps={{title: 'Demo App!'}}>
+    <RouteItem path="/" componentPage={<HomeComponent />} />
+    <RouteItem exact path="/getstarted" componentPage={<GetStartedComponent />} />
+    <RouteItem title={"Settings"} exact path="/setting" componentPage={<SettingsComponent />} />
+  </RouteGroup>
+```
+
+
+#### src/components/RouteItem.tsx
+
+RouteItem simple adds some features to the react-route v4 Route object.
 
 
 
