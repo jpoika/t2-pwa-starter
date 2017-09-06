@@ -32,7 +32,6 @@
  * Original Software: robert.a.kayl.civ@mail.mil
  */
 import * as React from 'react';
-const loadMainAppBar = require('bundle-loader?lazy!./MainAppBar');
 const loadMainTabs = require('bundle-loader?lazy!./MainTabs');
 import Bundle from './Bundle';
 import LeftMenuIcon from './LeftMenuIcon';
@@ -46,7 +45,6 @@ export interface AppPageInterface {
   selectTab(tabsId: string | number, tabId:number): void;
   history: any;
   version: string;
-  appType: string;
   setTabs: (tabs: JSX.Element[]) => void;
   setDefaultTabs: (tabs: JSX.Element[]) => void;
   sendMessage(title:string): void;
@@ -63,7 +61,6 @@ export interface Props {
   leftIcon: JSX.Element;
   rightIcon: JSX.Element;
   title: string;
-  appType: string;
 }
 
 export interface State {
@@ -101,7 +98,6 @@ export default class Main extends React.Component<Props, State>{
   }
 
   handleSetTabs = (tempTabs: JSX.Element[]) => {
-    console.log(tempTabs);
     this.setState({
       tempTabs
     });
@@ -121,7 +117,6 @@ export default class Main extends React.Component<Props, State>{
     }
   }
   handleDefaultTabs = (mainTabs: JSX.Element[]) => {
-    console.log(mainTabs);
     this.setState({
       mainTabs
     });
@@ -214,7 +209,6 @@ export default class Main extends React.Component<Props, State>{
       version: this.props.version,
       setRightIcon: this.handleSetRightIcon,
       selectTab: this.handleSelectTab,
-      appType: this.props.appType,
       setTabs: this.handleSetTabs,
       setDefaultTabs: this.handleDefaultTabs,
       sendMessage: this.props.sendMessage,
@@ -225,11 +219,10 @@ export default class Main extends React.Component<Props, State>{
   }
   render(){
 
-    const loadComponent =  this.props.appType === 'tabs' ? loadMainTabs : loadMainAppBar;
     //async loading
-    return <Bundle load={loadComponent} >
-      {(LayoutComp) => {
-          return <LayoutComp appPage={this.getAppPageObject()} {...this.state} onTitleClick={this.handleTitleClick} />
+    return <Bundle load={loadMainTabs} >
+      {(MainTabs) => {
+          return <MainTabs appPage={this.getAppPageObject()} {...this.state} onTitleClick={this.handleTitleClick} />
         }}
     </Bundle>
   }

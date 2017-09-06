@@ -55,7 +55,6 @@ const dispatchToProps = (dispatch,ownProps) => {
 interface OwnProps {
   version: string;
   defaultTitle?: string;
-  appType: string;
 }
 
 interface DispPropsInterface{
@@ -66,4 +65,4 @@ interface StateToProps{
   title: string;
 }
 
-export default withRouter<{turkeyLurkey: boolean}>(connect<StateToProps,DispPropsInterface,OwnProps>(stateToProps,dispatchToProps)(MainComponent));
+export default withRouter<{}>(connect<StateToProps,DispPropsInterface,OwnProps>(stateToProps,dispatchToProps)(MainComponent));
