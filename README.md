@@ -49,7 +49,7 @@ The boilerplate is set up with a demo app of an online store. Run the demo app b
 
 ## Purpose
 
-The purpose of this starter app is to help developers more quickly build SPA/PWA apps internally at [T2](https://github.com/Telehealth-and-Technology).
+The purpose of this starter app is to help developers more quickly build SPA/PWA apps at [T2](https://github.com/Telehealth-and-Technology).
 
 ## For Developers
 
@@ -58,18 +58,17 @@ This app contains components written to handle common features/issues for apps a
 ### Directory Structure Notes
 #### src/components/
 
-Containes the reusable components of this starter app. Most of theses components
-don't need to be edited but there are a couple exceptions:
+Containes the reusable components of this starter app. 
+You probably won't need to edit most of these components 
+but there are a couple exceptions:
 
 #### src/components/AppRoutes.tsx
 
-You will need to edit this file to include your own routes and views. In the future the routes
-will likely be moved to a more logical location
+You will need to edit this file to include your own routes and views. In the future the routes will likely be moved to a more logical location
 
 #### src/components/StoreDemo
 
-This is just a directory that houses the store demo components. I just wanted to keep
-the demo related files separated from the rest of the project.
+This is just a directory that houses the store demo components. This was done to keep the demo related files separated from the rest of the project.
 
 
 ### Routing
@@ -81,8 +80,7 @@ the top level routing. For this app this file is located here:
 
 This app uses react router version 4.
 
-There are two components that basically utilize react-router v4 and add some features including the ability to:
-
+There were two components created that basically utilize react-router v4 and add some features including the ability to:
 
 
 - Set the page title
@@ -93,11 +91,23 @@ There are two components that basically utilize react-router v4 and add some fea
 
 #### src/components/RouteGroup.tsx
 
-The RouteGroup component does two primary things
-- You can use it to establish the default properites of all RouteItem components nested.
+The **RouteGroup** component is used in two primary things:
+
+##### Number 1
+
+- You can use it to establish the default properites of all **RouteItem** components nested within
+**RouteGroup**. In the example below we pass an object to the property **defaultProps**. Any properties fed to **defaultProps** are passed to each **RouteItem**. This property is optional and is only provided to keep
+things tidy. 
+
+- In the example below each **RouteItem** will receive **basePath='/main'** and **title='Demo App!'**. Any properties added directly to *RouteItem* will have priority over the defaultProps added to **RouteGroup**. So in the 3rd **RouteItem** below the **title="Settings"** property will override **title="Demo App!"**
+
+##### Number 2
+
+- You need to pass the appPage object [more on this later]. **The appPage property is required for RouteGroup.**
+
 
 ```jsx
-  <RouteGroup defaultProps={{title: 'Demo App!'}}>
+  <RouteGroup defaultProps={{basePath: '/main',title: 'Demo App!'}} appPage={appPage}>
     <RouteItem path="/" componentPage={<HomeComponent />} />
     <RouteItem exact path="/getstarted" componentPage={<GetStartedComponent />} />
     <RouteItem title={"Settings"} exact path="/setting" componentPage={<SettingsComponent />} />
@@ -107,10 +117,10 @@ The RouteGroup component does two primary things
 
 #### src/components/RouteItem.tsx
 
-RouteItem simply adds some features to the react-route v4 Route object. Plus adds some "goodie"
+RouteItem simply adds some features to the react-route v4 Route object. Plus adds some "goodies"
 like creating tabs, hightlighting tabs, setting the title on for the app bar.
 
-For example to create an app that has 3 routes and two tabs could be implemented with the code below.
+For example an app that has 3 routes and two tabs could be implemented with the code below.
 
 ```jsx
   <RouteGroup defaultProps={{title: 'Demo App!'}}>
@@ -119,10 +129,31 @@ For example to create an app that has 3 routes and two tabs could be implemented
     <RouteItem tabIndex={1} title={"Settings"} exact path="/product/:id" componentPage={<SettingsComponent />} />
   </RouteGroup>
 ```
-The first two RouteItems create a tab merely by including a tab property and the desired tab index.
+The first two RouteItems create a tab merely by including a **tab** property and the desired tab index.
 However notice that the 3rd route doesn't create a tab BUT when this route is active the "Products" tab will be 
-active because we've included the tabIndex property which is passed an index number corresponding to the "Products"
-tab.
+active because we've included the **tabIndex** property which is passed an index number corresponding to the "Products" tab.
+
+**Please keep in mind that if you are more comfortable using react-router v4 the standard way you won’t break the app by not using these components.**
+
+
+### App Page interface
+
+This interface is defined and implemented in **src/components/Main.tsx**
+
+This is an inteface available to all components specified in each **RouteItem** instance.
+It provides the capability to:
+
+- Set the page title
+- Set the left icon in the app bar
+- Set the right icon in the app bar
+- Manually create tabs.
+- Provides screen dimensions for PWA purposes
+
+Many of these functions are used "auto-magically" by **RouteItem**.
+
+This interfaces provides other functions that might not be commenly used.
+
+
 
 
 
