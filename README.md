@@ -53,8 +53,7 @@ The purpose of this starter app is to help developers more quickly build SPA/PWA
 
 ## For Developers
 
-This app features components written to handle common problems. If you don't want
-to use them the can be easilily swapped out.
+This app contains components written to handle common features/issues for apps at t2. If you don't want to use them they can be easilily swapped out with you're own custom solution.
 
 ### Directory Structure Notes
 #### src/components/
@@ -64,7 +63,8 @@ don't need to be edited but there are a couple exceptions:
 
 #### src/components/AppRoutes.tsx
 
-You will need to edit this file to include your own routes and views
+You will need to edit this file to include your own routes and views. In the future the routes
+will likely be moved to a more logical location
 
 #### src/components/StoreDemo
 
@@ -107,7 +107,22 @@ The RouteGroup component does two primary things
 
 #### src/components/RouteItem.tsx
 
-RouteItem simple adds some features to the react-route v4 Route object.
+RouteItem simply adds some features to the react-route v4 Route object. Plus adds some "goodie"
+like creating tabs, hightlighting tabs, setting the title on for the app bar.
+
+For example to create an app that has 3 routes and two tabs could be implemented with the code below.
+
+```jsx
+  <RouteGroup defaultProps={{title: 'Demo App!'}}>
+    <RouteItem tab={0} title={"Home"} path="/" componentPage={<HomeComponent />} />
+    <RouteItem tab={1} title={"Products"}exact path="/products" componentPage={<ProductsList />} />
+    <RouteItem tabIndex={1} title={"Settings"} exact path="/product/:id" componentPage={<SettingsComponent />} />
+  </RouteGroup>
+```
+The first two RouteItems create a tab merely by including a tab property and the desired tab index.
+However notice that the 3rd route doesn't create a tab BUT when this route is active the "Products" tab will be 
+active because we've included the tabIndex property which is passed an index number corresponding to the "Products"
+tab.
 
 
 
