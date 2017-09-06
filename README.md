@@ -151,7 +151,7 @@ It provides the capability to:
 
 Many of these functions are used "auto-magically" by **RouteItem**.
 
-This interfaces provides other functions that might not be commenly used.
+This interface provides other functions that might not be commonly used.
 
 
 
