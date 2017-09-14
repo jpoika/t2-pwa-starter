@@ -2,7 +2,7 @@
  * @file res/data/products.tsx
  * Products information for the Store Demo.
  *
- * Created by Jack LightFoot on 08/22/2017
+ * Created by T2 on 08/22/2017
  *
  * T2 PWA Starter
  *

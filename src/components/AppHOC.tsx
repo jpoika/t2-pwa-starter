@@ -2,7 +2,7 @@
  * @file AppHOC.tsx
  * AppHOC represents higher order components mostly used to enforce props interface.
  *
- * Created by Jack LightFoot on 08/22/2017
+ * Created by T2 on 08/22/2017
  *
  * T2 PWA Starter
  *

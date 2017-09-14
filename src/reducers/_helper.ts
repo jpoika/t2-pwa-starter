@@ -2,7 +2,7 @@
  * @file reducers/_helpers.ts
  * Helper functions for reducers.
  *
- * Created by Jack LightFoot on 08/22/2017
+ * Created by T2 on 08/22/2017
  *
  * T2 PWA Starter
  *

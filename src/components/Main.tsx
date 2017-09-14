@@ -4,7 +4,7 @@
  * or containers in order to access common properties or functions such as
  * the router or screen information.
  *
- * Created by Jack LightFoot on 08/22/2017
+ * Created by T2 on 08/22/2017
  *
  * T2 PWA Starter
  *

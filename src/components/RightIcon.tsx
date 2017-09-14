@@ -2,7 +2,7 @@
  * @file RightIcon.tsx
  * RightIcon represents an icon to be passed to right of the app bar.
  *
- * Created by Jack LightFoot on 08/22/2017
+ * Created by T2 on 08/22/2017
  *
  * T2 PWA Starter
  *

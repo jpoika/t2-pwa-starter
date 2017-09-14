@@ -3,7 +3,7 @@
  * File in charge of Displaying app bar. The app bar contains a left icon, image,
  * and title.
  *
- * Created by Jack LightFoot on 08/22/2017
+ * Created by T2 on 08/22/2017
  *
  * T2 PWA Starter
  *

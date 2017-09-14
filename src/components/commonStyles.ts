@@ -3,7 +3,7 @@
  * File contains variables for component styling. Each variable represents
  * a css style to be passed in to a component.
  *
- * Created by Jack LightFoot on 08/22/2017
+ * Created by T2 on 08/22/2017
  *
  * T2 PWA Starter
  *

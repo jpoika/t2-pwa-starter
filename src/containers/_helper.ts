@@ -2,7 +2,7 @@
  * @file _helper.tsx
  * Helper functions for math functions and sorting algorithms.
  *
- * Created by Jack LightFoot on 08/22/2017
+ * Created by T2 on 08/22/2017
  *
  * T2 PWA Starter
  *
