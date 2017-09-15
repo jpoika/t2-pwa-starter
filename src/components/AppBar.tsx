@@ -36,6 +36,7 @@ import {appBarTitleStyle, appBarIconeStyle} from './commonStyles';
 const appIcon = require("../res/images/ui/app_icon_48.png")
 
 export interface Props {
+  // class AppBar (defined below) will expect to be passed these properties
   leftIcon: JSX.Element,
   rightIcon: JSX.Element,
   title: string;
@@ -45,6 +46,7 @@ export interface Props {
 export interface State {
 }
 
+// The return value is passed to the title property of the app bar component
 const getTitleIcon = (title) => {
   return <div>
            <div style={{position: 'relative',top: 4}} >
@@ -54,6 +56,11 @@ const getTitleIcon = (title) => {
          </div>;
 }
 
+/**
+ * Simple AppBar component that wraps around the material-ui AppBar
+ * 
+ * @see http://www.material-ui.com/#/components/app-bar
+ */
 export default class AppBar extends React.Component<Props, State>{
 
 

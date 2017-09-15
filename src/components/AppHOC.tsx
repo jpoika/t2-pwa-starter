@@ -1,6 +1,8 @@
 /**
  * @file AppHOC.tsx
  * AppHOC represents higher order components mostly used to enforce props interface.
+ * 
+ * HOC stands for (Higher Order Component) @see https://www.google.com/search?q=react+higher+order+components&oq=react+high
  *
  * Created by T2 on 08/22/2017
  *
@@ -37,11 +39,29 @@ interface HOCPageProps extends PageProps{
   [propName: string]: any;
 }
 
+
+/**
+ * This function simply addes properties to a component
+ * 
+ * @param  {JSX.Element} WrappedComponent - the target component
+ * @param  {Object} props - an object containing the props you wish to add to WrappedComponent
+ * @return {JSX.Element} - An new Element with properties bound to it.
+ */
 const withPropsComponent = (WrappedComponent,props) => {
   const componentProps = {...props, tab: undefined, tabIndex: undefined};
   return <WrappedComponent {...componentProps} />;
 }
 
+/**
+ * Takes any React component as its first argument and wraps said component
+ * in a Page component.
+ *
+ * The Page component handles a lot of common "Pagey" features like seting the page title 
+ * and back icons in the AppBar and other ancestor components. 
+ *
+ * @param WrappedComponent - the JSX.Element you wish to wrap with Page.
+ * @param props the minimal set of properties expected by the Page component
+ */
 
 export const routePageWithProps = (WrappedComponent,props:HOCPageProps) => {
     return (routeProps) => {
@@ -51,22 +71,52 @@ export const routePageWithProps = (WrappedComponent,props:HOCPageProps) => {
     }
 }
 
+/**
+ * Provides a callback function which is expected by the "render" property of the Route component(react-router v4)
+ * It combines properties defined by the user with the standard routing properties provided by the
+ * route component
+ *
+ * @see https://reacttraining.com/react-router/core/api/Route/render-func
+ * @see https://reacttraining.com/react-router/core/api/Route
+ * 
+ * 
+ * @param  {JSX.Element} WrappedComponent - the JSX.Element you wish Route to render
+ * @param  {Object} props - any additional properties you wish to add to WrappedComponent
+ * @return {Function} the callback function that altimately renders WrappedComponent
+ */
 export const routeComponentWithProps = (WrappedComponent,props) => {
     return (routeProps) => {
       return withPropsComponent(WrappedComponent,{...props,...routeProps});
     }
 }
 
+/**
+ * @deprecated since version 1.0.0
+ */
 export const menuItem = (WrappedComponent,basePath:string = '/') => {
 
       return withPropsComponent(WrappedComponent,{basePath});
 }
 
+/**
+ * Just a convenience function to provide a standard back icon.
+ * Mainly for use in the AppBar "leftIcon" property
+ * 
+ * @param  {String} path - the path to the back page
+ * @return {JSX.Element} the back ui component
+ */
 export const backIcon = (path:string = '/') => {
 
       return <BackButton path={path} />;
 }
-
+/**
+ * @deprecated since version 1.0.0
+ * 
+ * Just a convenience function to combine the most common back navigation options in 
+ * one function.
+ *
+ * @param {string} path - the path/route to the back destination
+ */
 export const leftIconProps = (path:string): {leftIcon: JSX.Element, titlePath: string} => {
 
       return {

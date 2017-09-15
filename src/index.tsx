@@ -53,18 +53,23 @@ injectTapEventPlugin();
 
 require('./index.html'); //load and emit index.html to destination directory
 require('./manifest.json'); //load and emit manifest.json to destination directory
-require("file-loader?name=[name].[ext]!./favicon.ico");
+require("file-loader?name=[name].[ext]!./favicon.ico"); //tell webpack to use file-loader to process the favicon
 
 const render = (RootComponent: any) => {
 
+  //thunkArgs is passed in as the 3rd argument for all redux-thunks action
+  //This allows thunk actions to access app level information and features
+  // @see [Function] "searchProducts" in <rootDir>/src/actions/storeDemo.ts 
+  // @see https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
 
   const thunkArgs = {
-    isCordova: __IS_CORDOVA_BUILD__,
+    isCordova: __IS_CORDOVA_BUILD__, //__IS_CORDOVA_BUILD__ is set in <rootDir>/webpack.*.js files
     platform: __IS_CORDOVA_BUILD__ ? (window as any).device.platform.toLowerCase() : 'browser',
     nativeSettings: __IS_CORDOVA_BUILD__  ? (window as any).cordova.plugins.settings : null,
     appPrefix: __REDUX_PERSIST_PREFIX__
   }
-
+  
+  //here we add the reducer to createStore which establishes the redux state tree.
   const store = createStore(
       reducer,
       undefined,
@@ -74,21 +79,31 @@ const render = (RootComponent: any) => {
       ) as any
     );
 
-
+  //this sets up the redux-persist module to work with redux
   persistStore(store,{
-    blacklist: ['view'],
-    //whitelist: [],
+    blacklist: ['view'], //establishes which tables must NOT be persisted
+    //whitelist: [], //establishes which tables are saved
     storage: localForage,//You can choose a diffrent engine
-    keyPrefix: __REDUX_PERSIST_PREFIX__
+    keyPrefix: __REDUX_PERSIST_PREFIX__ 
+    // __REDUX_PERSIST_PREFIX__ is set in <rootDir>/app.config.js.
+    // Prefixes a string each table so that you can host multiple apps
+    // on the same origin without accidently using the wrong table when multiple apps share
+    // the same table names
+
   });
 
-  if(__DEVTOOLS__){
+  if(__DEVTOOLS__){ 
+    //__DEVTOOLS__ is set in <rootDir>/webpack.*.js files.
+    //If __DEVTOOLS__ = false, which is the case in production, this code within this block will be stripped from the build
     store.subscribe(() => {
-       // console.log(store.getState()); // list entire state of app
+       console.log(store.getState()); // list entire redux state of app
     });
   }
 
+  //set the platform in redux state (state.user.platform) 
+  //This is more usefull for cordova projects
   store.dispatch(setUserPlatform(thunkArgs.platform));
+
 
   const cordovaPause = () => {
      // store.dispatch(someAction());
@@ -116,13 +131,17 @@ const render = (RootComponent: any) => {
         document.getElementById("spaApp")
     );
 }
+
+
 if(__IS_CORDOVA_BUILD__){
+  // If __IS_CORDOVA_BUILD__ = true Then we don't want to render any React compoents until
+  // cordova and all platform plugins are ready as indicated when the "deviceready" event is triggered.
   document.addEventListener("deviceready", function(){
 
        render(App);
   })
 } else {
-
+  //Rendering in the broswer
   render(App);
 
 
