@@ -454,6 +454,13 @@ babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
 
+babel-runtime@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
+
 babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.25.0, babel-template@^6.7.0:
   version "6.25.0"
   resolved "https://registry.yarnpkg.com/babel-template/-/babel-template-6.25.0.tgz#665241166b7c2aa4c619d71e192969552b10c071"
@@ -2280,9 +2287,13 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
-hoist-non-react-statics@^1.0.0, hoist-non-react-statics@^1.0.3, hoist-non-react-statics@^1.2.0:
+hoist-non-react-statics@^1.0.3, hoist-non-react-statics@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
+
+hoist-non-react-statics@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -3267,9 +3278,9 @@ makeerror@1.0.x:
   dependencies:
     tmpl "1.0.x"
 
-material-ui@^0.18.7:
-  version "0.18.7"
-  resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.18.7.tgz#b87af16357e6966b36c23d489eb2ed70746d25f8"
+material-ui@^0.19.4:
+  version "0.19.4"
+  resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.19.4.tgz#ca9cdca8aa8bb594dfac5db38ec9ff045a323587"
   dependencies:
     babel-runtime "^6.23.0"
     inline-style-prefixer "^3.0.2"
@@ -3277,9 +3288,9 @@ material-ui@^0.18.7:
     lodash.merge "^4.6.0"
     lodash.throttle "^4.1.1"
     prop-types "^15.5.7"
-    react-event-listener "^0.4.5"
-    react-transition-group "^1.1.2"
-    recompose "0.24.0"
+    react-event-listener "^0.5.1"
+    react-transition-group "^1.2.1"
+    recompose "^0.26.0"
     simple-assign "^0.1.0"
     warning "^3.0.0"
 
@@ -4024,6 +4035,15 @@ react-event-listener@^0.4.5:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
+react-event-listener@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.5.1.tgz#ba36076e47bc37c5a67ff5ccd4a9ff0f15621040"
+  dependencies:
+    babel-runtime "^6.26.0"
+    fbjs "^0.8.16"
+    prop-types "^15.6.0"
+    warning "^3.0.0"
+
 react-hot-loader@next:
   version "3.0.0-beta.7"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-3.0.0-beta.7.tgz#d5847b8165d731c4d5b30d86d5d4716227a0fa83"
@@ -4120,9 +4140,9 @@ react-test-renderer@^15.6.1:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
-react-transition-group@^1.1.2:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.0.tgz#b51fc921b0c3835a7ef7c571c79fc82c73e9204f"
+react-transition-group@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"
   dependencies:
     chain-function "^1.0.0"
     dom-helpers "^3.2.0"
@@ -4208,13 +4228,13 @@ recast@^0.10.1:
     private "~0.1.5"
     source-map "~0.5.0"
 
-recompose@0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.24.0.tgz#262e93f974439eb17e7779824d88cce90492a5dd"
+recompose@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.26.0.tgz#9babff039cb72ba5bd17366d55d7232fbdfb2d30"
   dependencies:
     change-emitter "^0.1.2"
     fbjs "^0.8.1"
-    hoist-non-react-statics "^1.0.0"
+    hoist-non-react-statics "^2.3.1"
     symbol-observable "^1.0.4"
 
 redbox-react@^1.3.6:
@@ -4254,6 +4274,10 @@ redux@^3.6.0, redux@^3.7.2:
 regenerator-runtime@^0.10.0:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
+
+regenerator-runtime@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.0.tgz#7e54fe5b5ccd5d6624ea6255c3473be090b802e1"
 
 regex-cache@^0.4.2:
   version "0.4.3"
