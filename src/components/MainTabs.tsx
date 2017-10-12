@@ -30,7 +30,7 @@
  * Original Software: robert.a.kayl.civ@mail.mil
  */
 import * as React from 'react';
-import {Tabs} from 'material-ui/Tabs';
+import Tabs from 'material-ui-next/Tabs';
 import MainContent from './MainContent';
 import {AppPageInterface} from './Main';
 import AppBar from '../containers/AppBar';
@@ -56,7 +56,7 @@ export interface State {
 
 export default class MainTabs extends React.Component<any,any> {
 
-  handleChange = (value) => {
+  handleChange = (event, value) => {
     const {appPage} = this.props;
     console.log(value);
     appPage.selectTab(null,value);
