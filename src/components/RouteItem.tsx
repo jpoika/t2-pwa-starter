@@ -1,5 +1,5 @@
 /**
- * @file NavItem.tsx
+ * @file RouteItem.tsx
  * 
  *
  * Created by T2 on 08/22/2017
@@ -46,7 +46,7 @@ export interface Props {
   tab?: number;
   titlePath?: string;
   componentPage?: React.ReactNode;
-  component?: React.ReactNode
+  component?: React.ReactNode;
 }
 
 interface PropsForce{ //workaround

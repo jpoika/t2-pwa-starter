@@ -1,7 +1,10 @@
 /**
  * @file RouteGroup.tsx
- * Route group sets the tabs for the application based on the current
- * group of routes.
+ * RouteGroup is used in tandem RouteItem establish the application routes and optionally
+ * tabs, page titles, AppBar icons .etc.
+ *
+ * Specifically RouteGroup iterates through all its RouteItem children and creates a Tab item for
+ * each RouteItem that has a "tab" property.
  *
  * Created by T2 on 08/22/2017
  *
@@ -34,6 +37,7 @@ import * as React from 'react';
 
 import {Tab} from 'material-ui/Tabs';
 import {AppPageInterface} from './Main';
+
 export interface Props {
   id?: string;
   appPage: AppPageInterface;
@@ -50,7 +54,16 @@ export interface State {
 
 
 export default class RouteGroup extends React.Component<Props,any> {
-
+  /**
+   * This method handles the actions associated with tapping on or otherwise
+   * activating a tab item.
+   *
+   * By default this function will navigate to the route provided by the "path" property of
+   * RouteItem
+   * 
+   * @param  {string} path the route path to navigate to.
+   * @return {Function}      A call back function that is passed the active tab.
+   */
   handleTabActive = (path) => {
     const {appPage, onActive} = this.props;
     return (tab) => {
