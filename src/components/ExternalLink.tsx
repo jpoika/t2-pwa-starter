@@ -39,7 +39,7 @@ export interface Props {
 export interface State {
 
 }
-
+//TODO this doesn work with react 16
 declare module 'react' { //See https://github.com/zilverline/react-tap-event-plugin/issues/58
     interface HTMLProps<T> {
         onTouchTap?: React.EventHandler<React.TouchEvent<T>>;
@@ -65,7 +65,7 @@ export default class ExternalLink extends React.Component<Props, State>{
   }
 
   render(){
-    return <span onTouchTap={this.handleExternalNavigation}>
+    return <span onClick={this.handleExternalNavigation}>
               {this.props.children}
            </span>;
   }

@@ -31,7 +31,7 @@
  */
 import * as React from 'react';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui-next/Button';
 import {fullWidthDialagStyle} from './commonStyles';
 import {eula} from '../res/data/settings';
 
@@ -61,19 +61,17 @@ export default class Eula extends React.Component<MyProps, MyState> {
   render(){
     const {accept,reject,eulaAccepted,hideRejectButton} = this.props;
     let actions = [
-      <FlatButton
-        label="Accept"
-        primary={true}
-        onTouchTap={accept}
-      />
+      <Button
+        color="primary"
+        onClick={accept}
+      >Accept</Button>
     ];
 
     if(!hideRejectButton){
-      actions.push(<FlatButton
-            label="Reject"
-            primary={true}
-            onTouchTap={reject}
-        />);
+      actions.push(<Button
+            color="primary"
+            onClick={reject}
+        >Reject</Button>);
     }
 
     return (
