@@ -80,7 +80,7 @@ export default class RouteGroup extends React.Component<Props,any> {
     this.props.children
       .filter((child) => typeof child.props['tab'] !== 'undefined')
       .map((child, idx) => {
-        tabs.push(<Tab onFocus={this.handleTabActive(child.props.path)} label={child.props.title} value={idx} />);
+        tabs.push(<Tab onClick={this.handleTabActive(child.props.path)} label={child.props.title} value={idx} />);
       });
 
     appPage.setDefaultTabs(tabs);

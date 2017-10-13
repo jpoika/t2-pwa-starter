@@ -43,12 +43,16 @@ import * as injectTapEventPlugin from 'react-tap-event-plugin';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './containers/Main';
-
+import { MuiThemeProvider as MuiThemeProviderNext,createMuiTheme} from 'material-ui-next/styles';
 import reducer from './reducers';
 import {setUserPlatform} from './actions';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 OfflinePluginRuntime.install();
-
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark', // Switching the dark mode on is a single property value change.
+  },
+});
 injectTapEventPlugin();
 
 require('./index.html'); //load and emit index.html to destination directory
@@ -120,13 +124,15 @@ const render = (RootComponent: any) => {
 
     ReactDOM.render(
         <AppContainer>
-         <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-            <Provider store={store}>
-              <HashRouter>
-                <RootComponent version={__APP_VERSION__} defaultTitle={__APP_NAME__} />
-              </HashRouter>
-            </Provider>
-          </MuiThemeProvider>
+         <MuiThemeProviderNext theme={theme}>
+           <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+              <Provider store={store}>
+                <HashRouter>
+                  <RootComponent version={__APP_VERSION__} defaultTitle={__APP_NAME__} />
+                </HashRouter>
+              </Provider>
+            </MuiThemeProvider>
+          </MuiThemeProviderNext>
         </AppContainer>,
         document.getElementById("spaApp")
     );
